@@ -20,6 +20,7 @@ const person = {
     },
     
     // Shorter method syntax (ES6)
+    // Called: Method Shorthand
     eat(){
         console.log("I am eating pizza");
     }
