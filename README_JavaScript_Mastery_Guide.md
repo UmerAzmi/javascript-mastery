@@ -2,14 +2,15 @@
 
 A structured, interactive learning resource covering modern JavaScript from core fundamentals to advanced concepts, including asynchronous programming and DOM manipulation.
 
-![JavaScript](https://img.shields.io/badge/JavaScript-ES6+-yellow?style=for-the-badge&logo=javascript)
-![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
-![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
-
 <div>
 <a href="https://UmerAzmi.github.io/javascript-mastery/" target="_blank">
   <img src="https://img.shields.io/badge/View-Live%20Demo-blue?style=for-the-badge">
 </a>
+
+![JavaScript](https://img.shields.io/badge/JavaScript-ES6+-yellow?style=for-the-badge&logo=javascript)
+<!-- ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white) -->
+
 
 ## 📚 About
 
