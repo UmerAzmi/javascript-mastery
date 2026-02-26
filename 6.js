@@ -33,6 +33,7 @@ console.log("Person's last name (bracket notation):", person["lastName"]);
 // Calling object methods:
 console.log("sayHello() method:");
 person.sayHello();
+
 console.log("eat() method:");
 person.eat();
 
@@ -91,7 +92,7 @@ const user = {
         city: "Mumbai",
         country: "India"
     },
-    hobbies: ["coding", "gaming", "reading"]  // Array inside object
+    hobbies: ["coding", "gaming", "exercising"]  // Array inside object
 };
 
 // Accessing nested properties:
@@ -100,6 +101,8 @@ console.log("User's first hobby (array in object):", user.hobbies[0]);
 
 
 // ================= TOPIC 32: CONSTRUCTOR FUNCTIONS =================
+
+console.log("\n--- Topic 32: Constructor Functions ---");
 
 // constructor = special method for defining the properties and methods of objects
 //               Think of it as a blueprint/template for creating multiple similar objects
