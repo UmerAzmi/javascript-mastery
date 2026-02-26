@@ -292,6 +292,8 @@ console.log("Static method - getArea(10):", MathHelper.getArea(10));
 
 // ================= TOPIC 34: DESTRUCTURING =================
 
+console.log("\n---- Topic 34: Destructuring ----");
+
 // destructuring = extract values from arrays and objects,
 //                 then assign them to variables in a convenient way
 //                 Shorthand syntax introduced in ES6

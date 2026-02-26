@@ -330,18 +330,19 @@
     <section>
         <h2>Topic 34: Destructuring</h2>
         <p>Extract values from arrays and objects into separate variables</p>
-        
+
         <div class="critical-box">
-            <strong>You'll use destructuring constantly:</strong>
+            <strong>Destructuring:</strong>
             <ul>
-                <li>Props: <code>function MyComponent({name, age})</code></li>
-                <li>useState: <code>const [count, setCount] = useState(0)</code></li>
-                <li>Array/Object data manipulation</li>
+                <li>Extract values from arrays and objects into variables</li>
+                <li>Makes code shorter and more readable</li>
+                <li>Commonly used when working with object and array data</li>
             </ul>
         </div>
 
         <h3>Array Destructuring</h3>
         <div class="syntax-box">
+            <pre>
 <span class="keyword">const</span> colors = [<span class="string">"red"</span>, <span class="string">"green"</span>, <span class="string">"blue"</span>];
 
 <span class="comment">// Extract by position</span>
@@ -352,10 +353,12 @@
 
 <span class="comment">// Rest operator</span>
 <span class="keyword">const</span> [primary, ...others] = colors;
+</pre>
         </div>
 
         <h3>Object Destructuring</h3>
         <div class="syntax-box">
+            <pre>
 <span class="keyword">const</span> person = {firstName: <span class="string">"Umer"</span>, age: <span class="string">23</span>};
 
 <span class="comment">// Extract by property name</span>
@@ -366,6 +369,7 @@
 
 <span class="comment">// Default values</span>
 <span class="keyword">const</span> {country = <span class="string">"India"</span>} = person;
+</pre>
         </div>
 
         <table>
@@ -376,8 +380,8 @@
             </tr>
             <tr>
                 <td>Array</td>
-                <td><code>[var1, var2]</code></td>
-                <td><code>const [x, y] = [1, 2]</code></td>
+                <td><code>[element1, element2]</code></td>
+                <td><code>const [x, y] = array</code></td>
             </tr>
             <tr>
                 <td>Object</td>
@@ -387,7 +391,7 @@
             <tr>
                 <td>Skip Array Item</td>
                 <td><code>[var1, , var3]</code></td>
-                <td><code>const [a, , c] = [1,2,3]</code></td>
+                <td><code>const [a, , c] = array</code></td>
             </tr>
             <tr>
                 <td>Rename Object</td>
@@ -401,25 +405,16 @@
             </tr>
             <tr>
                 <td>Function Params</td>
-                <td><code>fn({prop1, prop2})</code></td>
+                <td><code>function({prop1, prop2})</code></td>
                 <td><code>function({name, age}){}</code></td>
+            </tr>
+            <tr>
+                <td>Func Params with default</td>
+                <td><code>function({prop1})</code></td>
+                <td><code>function({name = 'John Doe', age = 'unknown'}){}</code></td>
             </tr>
         </table>
 
-        <div class="info-box">
-            <strong>React Pattern:</strong> Destructuring props makes components cleaner!
-            <div class="syntax-box" style="margin-top: 10px;">
-<span class="comment">// Instead of this:</span>
-<span class="keyword">function</span> MyComponent(props) {
-    <span class="keyword">return</span> &lt;h1&gt;{props.name}&lt;/h1&gt;;
-}
-
-<span class="comment">// Use destructuring:</span>
-<span class="keyword">function</span> MyComponent({name}) {
-    <span class="keyword">return</span> &lt;h1&gt;{name}&lt;/h1&gt;;
-}
-            </div>
-        </div>
     </section>
 
     <section style="background-color: white; padding: 20px; margin: 20px 0; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
