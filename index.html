@@ -7,14 +7,13 @@
     <title>JavaScript Mastery</title>
     <style>
         * {
-            margin: 0;
-            padding: 0;
             box-sizing: border-box;
         }
         body {
+            margin: 0 auto;
             font-family: 'Georgia', serif;
             background-color: #f8f9fa;
-            padding: 40px 20px;
+            padding: 40px 20px 20px;
         }
         .container {
             max-width: 900px;
@@ -105,99 +104,99 @@
             font-size: 14px;
         }
         /* ============= MOBILE RESPONSIVENESS ============= */
-@media (max-width: 768px) {
-    body {
-        padding: 20px 10px;
+    @media (max-width: 768px) {
+        body {
+            padding: 20px 10px;
+        }
+        
+        .container {
+            padding: 30px 20px;
+        }
+        
+        .header h1 {
+            font-size: 28px;
+        }
+        
+        .header p {
+            font-size: 16px;
+        }
+        
+        .index-title {
+            font-size: 18px;
+            letter-spacing: 1px;
+        }
+        
+        .chapter {
+            padding: 20px 15px;
+            margin-bottom: 25px;
+        }
+        
+        .chapter-header {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        
+        .chapter-number {
+            font-size: 24px;
+            margin-right: 0;
+            margin-bottom: 8px;
+            min-width: auto;
+        }
+        
+        .chapter-title {
+            font-size: 18px;
+        }
+        
+        .topics {
+            margin-left: 0;
+            font-size: 14px;
+            line-height: 1.6;
+            margin-top: 10px;
+        }
+        
+        .chapter-link {
+            margin-left: 0;
+            margin-top: 12px;
+            font-size: 13px;
+        }
+        
+        .footer {
+            font-size: 13px;
+            margin-top: 30px;
+            padding-top: 20px;
+        }
     }
-    
-    .container {
-        padding: 30px 20px;
-    }
-    
-    .header h1 {
-        font-size: 28px;
-    }
-    
-    .header p {
-        font-size: 16px;
-    }
-    
-    .index-title {
-        font-size: 18px;
-        letter-spacing: 1px;
-    }
-    
-    .chapter {
-        padding: 20px 15px;
-        margin-bottom: 25px;
-    }
-    
-    .chapter-header {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    
-    .chapter-number {
-        font-size: 24px;
-        margin-right: 0;
-        margin-bottom: 8px;
-        min-width: auto;
-    }
-    
-    .chapter-title {
-        font-size: 18px;
-    }
-    
-    .topics {
-        margin-left: 0;
-        font-size: 14px;
-        line-height: 1.6;
-        margin-top: 10px;
-    }
-    
-    .chapter-link {
-        margin-left: 0;
-        margin-top: 12px;
-        font-size: 13px;
-    }
-    
-    .footer {
-        font-size: 13px;
-        margin-top: 30px;
-        padding-top: 20px;
-    }
-}
 
-@media (max-width: 480px) {
-    .container {
-        padding: 20px 15px;
+    @media (max-width: 480px) {
+        .container {
+            padding: 20px 15px;
+        }
+        
+        .header {
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .header h1 {
+            font-size: 24px;
+        }
+        
+        .header p {
+            font-size: 14px;
+        }
+        
+        .chapter-number {
+            font-size: 20px;
+        }
+        
+        .chapter-title {
+            font-size: 16px;
+        }
+        
+        .topics {
+            font-size: 13px;
+        }
     }
-    
-    .header {
-        padding-bottom: 20px;
-        margin-bottom: 30px;
-    }
-    
-    .header h1 {
-        font-size: 24px;
-    }
-    
-    .header p {
-        font-size: 14px;
-    }
-    
-    .chapter-number {
-        font-size: 20px;
-    }
-    
-    .chapter-title {
-        font-size: 16px;
-    }
-    
-    .topics {
-        font-size: 13px;
-    }
-}
     </style>
 </head>
 <body>
@@ -321,5 +320,14 @@
             Learn. Practice. Master.
         </div>
     </div>
+
+    <footer style="text-align: center; padding: 13px; padding-top: 10px; color: #64748b; border-top: 1px solid #e5e7eb; margin-top: 35px;">
+        <p>© 2025 Umer Azmi | <a href="https://github.com/UmerAzmi/javascript-mastery/blob/main/LICENSE" target="_blank" style="color: #22c55e; margin: 16px 0;text-decoration: none;">MIT License</a> </p>
+        <p style="font-size: 14px; margin: 5px 0 0;">JavaScript Mastery Guide - Open Source Learning Platform</p>
+        <p style="color: #64748b; font-size: 13px; margin-bottom: 0;">
+          <a href="https://github.com/UmerAzmi/javascript-mastery" target="_blank" style="color: #22c55e; text-decoration: none;">⭐ Star on GitHub</a>
+        </p>
+    </footer>
+
 </body>
 </html>
