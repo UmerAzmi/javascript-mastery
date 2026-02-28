@@ -4,75 +4,108 @@
 // Allows JavaScript to interact with and manipulate HTML elements
 // document.createElement() = Creates a new HTML element
 
+const createElementBtn = document.getElementById("createElementBtn")
+const removeElementBtn = document.getElementById("removeElementBtn")
+const exampleBox = document.getElementById("exampleBox")
+createElementBtn.onclick = createElementFun
+removeElementBtn.onclick = removeElementFun
+removeElementBtn.style.backgroundColor = "#57645b"
+removeElementBtn.style.cursor = "not-allowed"
 // ---------- EXAMPLE 1: h1 ELEMENT ----------
 
-// STEP 1: CREATE THE ELEMENT
-// createElement(tagName) = Creates a new element of specified type
-const newH1 = document.createElement("h1");
+function createElementFun(){      // Ignore this function its for the running the example
+    
+    exampleBox.textContent=""
+    createElementBtn.style.backgroundColor = "#57645b"
+    removeElementBtn.style.backgroundColor = "#22c55e"
+    createElementBtn.style.cursor = "not-allowed"
+    removeElementBtn.style.cursor = "pointer"
 
-// STEP 2: ADD ATTRIBUTES/PROPERTIES
-// .textContent = Sets the text inside the element
-newH1.textContent = "I like pizza!";
-// .id = Sets the id attribute
-newH1.id = "myH1";
-// .style = Access inline CSS styles
-newH1.style.color = "tomato";
-newH1.style.textAlign = "center";
 
-// STEP 3: APPEND ELEMENT TO DOM
-// .append() = Adds element to the END of parent
-document.body.append(newH1);
+    // STEP 1: CREATE THE ELEMENT
+    // createElement(tagName) = Creates a new element of specified type
+    const newH1 = document.createElement("h1");
+    
+    // STEP 2: ADD ATTRIBUTES/PROPERTIES
+    // .textContent = Sets the text inside the element
+    newH1.textContent = "I like pizza!";
+    // .id = Sets the id attribute
+    // .className = Sets the className attribute
+    newH1.id = "myH1";
+    // .style = Access inline CSS styles
+    newH1.style.color = "tomato";
+    newH1.style.textAlign = "center";
+    newH1.style.marginBottom = "10px";
+    
+    // STEP 3: APPEND ELEMENT TO DOM
+    // .append() = Adds element to the END of parent
+    document.getElementById('exampleBox').append(newH1);
+    
+    // Other positioning methods:
+    // .prepend() = Adds element to the BEGINNING of parent
+    // document.body.prepend(newH1);
+    
+    // Append to specific element by ID:
+    // document.getElementById("box1").append(newH1);
+    // document.getElementById("box1").prepend(newH1);
+    
+    // .insertBefore(newElement, referenceElement) = Insert before a specific element
+    // const box4 = document.getElementById("box4");
+    // document.body.insertBefore(newH1, box4);
+    
+    // Insert before first element in a collection:
+    // const boxes = document.querySelectorAll(".box");
+    // document.body.insertBefore(newH1, boxes[0]);
+    
+    // REMOVE HTML ELEMENT
+    // .removeChild(element) = Removes a child element from parent
+    // document.body.removeChild(newH1);
+    // document.getElementById("box1").removeChild(newH1);
+    
+    // ---------- EXAMPLE 2: li ELEMENT ----------
+    
+    // STEP 1: CREATE THE ELEMENT
+    const newListItem = document.createElement("li");
+    
+    // STEP 2: ADD ATTRIBUTES/PROPERTIES
+    newListItem.textContent = "coconut";
+    newListItem.id = "coconut";
+    newListItem.style.fontWeight = "bold";
+    newListItem.style.backgroundColor = "lightgreen";
+    newListItem.style.textAlign = "center";
+    newListItem.style.listStyle = "none";
+    newListItem.style.width = "fit-content";
+    newListItem.style.margin = "0 auto";
+    newListItem.style.padding = "10px 50px";
+    newListItem.style.borderRadius = "10%";
+    
+    
+    // STEP 3: APPEND ELEMENT TO DOM
+    exampleBox.append(newListItem);
+    // const exampleBox = document.getElementById("exampleBox")  // this makes exampleBox variable store the document....
+    // document.body.prepend(newListItem);
+    // document.getElementById("fruits").append(newListItem);
+    // document.getElementById("fruits").prepend(newListItem);
+    
+    // Insert before specific list item:
+    // const banana = document.getElementById("banana");
+    // document.getElementById("fruits").insertBefore(newListItem, banana);
+    
+    // Insert before second item in list:
+    // document.getElementById("fruits").insertBefore(newListItem, listItems[1]);
+    
+    // REMOVE HTML ELEMENT
+    // document.body.removeChild(newListItem);
+    // document.getElementById("fruits").removeChild(newListItem);
+}
 
-// Other positioning methods:
-// .prepend() = Adds element to the BEGINNING of parent
-// document.body.prepend(newH1);
-
-// Append to specific element by ID:
-// document.getElementById("box1").append(newH1);
-// document.getElementById("box1").prepend(newH1);
-
-// .insertBefore(newElement, referenceElement) = Insert before a specific element
-// const box4 = document.getElementById("box4");
-// document.body.insertBefore(newH1, box4);
-
-// Insert before first element in a collection:
-// const boxes = document.querySelectorAll(".box");
-// document.body.insertBefore(newH1, boxes[0]);
-
-// REMOVE HTML ELEMENT
-// .removeChild(element) = Removes a child element from parent
-// document.body.removeChild(newH1);
-// document.getElementById("box1").removeChild(newH1);
-
-// ---------- EXAMPLE 2: li ELEMENT ----------
-
-// STEP 1: CREATE THE ELEMENT
-const newListItem = document.createElement("li");
-
-// STEP 2: ADD ATTRIBUTES/PROPERTIES
-newListItem.textContent = "coconut";
-newListItem.id = "coconut";
-newListItem.style.fontWeight = "bold";
-newListItem.style.backgroundColor = "lightgreen";
-
-// STEP 3: APPEND ELEMENT TO DOM
-document.body.append(newListItem);
-// document.body.prepend(newListItem);
-// document.getElementById("fruits").append(newListItem);
-// document.getElementById("fruits").prepend(newListItem);
-
-// Insert before specific list item:
-// const banana = document.getElementById("banana");
-// document.getElementById("fruits").insertBefore(newListItem, banana);
-
-// Insert before second item in list:
-// const listItems = document.querySelectorAll("#fruits li");
-// document.getElementById("fruits").insertBefore(newListItem, listItems[1]);
-
-// REMOVE HTML ELEMENT
-// document.body.removeChild(newListItem);
-// document.getElementById("fruits").removeChild(newListItem);
-
+function removeElementFun(){                // Ignore this function its for the removing the example
+    createElementBtn.style.cursor = "pointer"
+    createElementBtn.style.backgroundColor = "#22c55e"
+    exampleBox.textContent = ""
+    removeElementBtn.style.cursor = "not-allowed"
+    removeElementBtn.style.backgroundColor = "#57645b"
+}
 
 // ================= TOPIC 44: EVENT LISTENERS - MOUSE EVENTS =================
 
@@ -96,13 +129,13 @@ myBox.addEventListener("click", event => {
 // mouseover = Fires when mouse pointer enters element
 myBox.addEventListener("mouseover", event => {
     event.target.style.backgroundColor = "yellow";
-    event.target.textContent = "Don't do it 😲";
+    event.target.textContent = "Don't click! 😨";
 });
 
 // mouseout = Fires when mouse pointer leaves element
 myBox.addEventListener("mouseout", event => {
     event.target.style.backgroundColor = "lightgreen";
-    event.target.textContent = "Click Me 😀";
+    event.target.textContent = "Click Me 😏";
 });
 
 
@@ -117,21 +150,33 @@ myBox.addEventListener("mouseout", event => {
 // event.key = The key that was pressed (e.g., "ArrowUp", "a", "Enter")
 // event.preventDefault() = Prevents default browser behavior
 
-const myBox2 = document.getElementById("myBox");
-const moveAmount = 10;  // Pixels to move per keypress
+const myBox2 = document.getElementById("movableBox");
+const moveAmount = 15;  // Pixels to move per keypress
 let x = 0;  // Horizontal position
 let y = 0;  // Vertical position
 
-// Change appearance when key is pressed
+// Change appearance when Arrow key is pressed 
 document.addEventListener("keydown", event => {
-    myBox2.textContent = "😲";
-    myBox2.style.backgroundColor = "tomato";
+    if(event.key.startsWith("Arrow")){
+        myBox2.textContent = "😲";
+        myBox2.style.backgroundColor = "tomato";
+    }
 });
 
-// Change appearance when key is released
+// Change appearance when Arrow key is released
 document.addEventListener("keyup", event => {
-    myBox2.textContent = "😀";
-    myBox2.style.backgroundColor = "lightblue";
+    if(event.key.startsWith("Arrow")){
+        myBox2.textContent = "😀";
+        myBox2.style.backgroundColor = "lightblue";
+    }
+});
+
+// Change appearance when Enter key is Pressed
+document.addEventListener("keydown", event => {
+    if(event.key === "Enter"){
+        myBox2.textContent = "😀";
+        myBox2.style.backgroundColor = "hsla(0, 0%, 0%, 0.71)";
+    }
 });
 
 // Move box with arrow keys
@@ -173,33 +218,37 @@ document.addEventListener("keydown", event => {
 // 1. display: none = Removes element from layout (takes no space)
 // 2. visibility: hidden = Hides element but keeps its space
 
-const myButton = document.getElementById("myButton");
-const myImg = document.getElementById("myImg");
+const myButton1 = document.getElementById("myButton1");
+const myImg1 = document.getElementById("myImage1");
+const myButton2 = document.getElementById("myButton2");
+const myImg2 = document.getElementById("myImage2");
 
-myButton.addEventListener("click", event => {
-   
+myButton1.addEventListener("click", event => {
+    
     // ----- METHOD 1: DISPLAY (Removes from layout) -----
     // display: none = Element is hidden and takes no space
     // display: block = Element is visible and takes normal space
-    if(myImg.style.display === "none"){
-        myImg.style.display = "block";
-        myButton.textContent = "Hide";
+    if(myImg1.style.display === "none"){
+        myImg1.style.display = "block";
+        myButton1.textContent = "🫣 Hide";
     }
     else{
-        myImg.style.display = "none";
-        myButton.textContent = "Show";
+        myImg1.style.display = "none";
+        myButton1.textContent = "👐🏻 Show";
     }
-   
+});
+
+myButton2.addEventListener("click", event => {
     // ----- METHOD 2: VISIBILITY (Keeps space) -----
     // visibility: hidden = Element is hidden but space remains
     // visibility: visible = Element is visible
-    if(myImg.style.visibility === "hidden"){
-        myImg.style.visibility = "visible";
-        myButton.textContent = "Hide";
+    if(myImg2.style.visibility === "hidden"){
+        myImg2.style.visibility = "visible";
+        myButton2.textContent = "🫣 Hide";
     }
     else{
-        myImg.style.visibility = "hidden";
-        myButton.textContent = "Show";
+        myImg2.style.visibility = "hidden";
+        myButton2.textContent = "👐🏻 Show";
     }
 });
 

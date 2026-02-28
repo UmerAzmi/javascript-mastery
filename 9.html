@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="https://raw.githubusercontent.com/UmerAzmi/umerazmi/4808b388a23a62988740c6eb078b6d75cab148a9/imgs/js.png">
     <title>JavaScript - DOM Manipulation & Events</title>
     <style>
         body {
@@ -154,10 +155,85 @@
             text-align: center;
             margin-top: 10px;
         }
+        pre{
+            padding: 0;
+            margin: 0;
+        }
+/* ============= MOBILE RESPONSIVENESS ============= */
+
+    /* Make tables responsive */
+    @media (max-width: 768px) {
+        /* Tables scroll horizontally on mobile */
+        table {
+            display: block;
+            overflow-x: auto;
+            white-space: nowrap;
+            -webkit-overflow-scrolling: touch;
+        }
+        
+        /* Smaller font sizes on mobile */
+        body {
+            font-size: 14px;
+            padding: 10px;
+        }
+        
+        section {
+            padding: 15px;
+            margin: 10px 0;
+        }
+        
+        h1 {
+            font-size: 24px !important;
+            padding: 15px !important;
+        }
+        
+        h2 {
+            font-size: 20px;
+        }
+        
+        h3 {
+            font-size: 18px;
+        }
+        
+        /* Syntax boxes scroll horizontally */
+        .syntax-box {
+            overflow-x: auto;
+            font-size: 11px;
+        }
+        
+        /* Make comparison grids stack vertically */
+        .comparison {
+            grid-template-columns: 1fr !important;
+        }
+        
+        /* Cards grid becomes single column */
+        .cards-grid {
+            grid-template-columns: 1fr !important;
+        }
+    }
+
+    /* Extra small phones */
+    @media (max-width: 480px) {
+        h1 {
+            font-size: 20px !important;
+        }
+        
+        table {
+            font-size: 12px;
+        }
+        
+        th, td {
+            padding: 8px;
+        }
+    }
     </style>
 </head>
 <body>
     <h1>🎨 JavaScript: DOM Manipulation & Events</h1>
+    <section style="border: 2px dashed #22c55e; padding: 15px 25px; margin: 20px 0; border-radius: 8px; text-align: center; background-color: transparent;">
+        <p style="color: #64748b; font-size: 17px; margin: 0 0 6px 0;">📄 Detailed explanations & code examples are in the <strong style="color: #22c55e;">JavaScript (.js) file</strong></p>
+        <p style="color: #64748b; font-size: 17px; margin: 0;">👇 Click the <strong style="color: #22c55e;">{ } button</strong> at the bottom right to view it</p>
+    </section>
     <p style="text-align: center; font-size: 18px; color: #64748b;">
         Create, Manipulate, and Interact with HTML Elements
     </p>
@@ -221,6 +297,11 @@
                 <li><strong>Example 1:</strong> Creating an h1 element</li>
                 <li><strong>Example 2:</strong> Creating a list item (li) element</li>
             </ul>
+            <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-top: 15px;">
+                <button id="createElementBtn">🚀 Add Elemets</button>
+                <button id="removeElementBtn">🚀 Remove Elemets</button>
+            </div>
+            <div id="exampleBox"></div>
         </div>
     </section>
 
@@ -334,10 +415,27 @@
             </tr>
         </table>
 
-        <div class="example-box">
+        <div class="example-box" style=" position: relative;">
             <strong>When to use which:</strong><br>
             • <strong>display: none</strong> - When you want elements below to move up<br>
             • <strong>visibility: hidden</strong> - When you want to keep the space occupied
+            <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-top: 15px;">
+                <button id="myButton1">🚀 Add Elemets</button>
+            </div>
+            <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-top: 15px;">
+                <button id="myButton2">🚀 Add Elemets</button>
+            </div>
+            <div style="position: absolute; right: 0; bottom: 0; display: flex; gap: 10px; padding: 20px;">
+                <img id="myImage1"
+                    src="https://raw.githubusercontent.com/UmerAzmi/umerazmi/4808b388a23a62988740c6eb078b6d75cab148a9/imgs/js.png"
+                    alt="img"
+                    style="display: block;">
+
+                <img id="myImage2"
+                    src="https://raw.githubusercontent.com/UmerAzmi/umerazmi/4808b388a23a62988740c6eb078b6d75cab148a9/imgs/js.png"
+                    alt="img"
+                    style="display: block; visibility: none;">
+            </div>
         </div>
     </section>
 
@@ -516,5 +614,347 @@ allBoxes.forEach(box => {
 
     <!-- Link to JavaScript file -->
     <script src="9.js"></script>
+        <style>
+        /* Shrinks main content when panel is open (DESKTOP ONLY) */
+        @media (min-width: 769px) {
+            body.panel-open {
+                margin-right: 40%;
+                transition: margin-right 0.3s ease;
+            }
+        }
+        body {
+            transition: margin-right 0.3s ease;
+        }
+
+        /* Floating button - bottom right corner */
+        #jsToggleBtn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #22c55e;
+            color: white;
+            border: none;
+            padding: 14px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: 700;
+            box-shadow: 0 4px 15px rgba(34, 197, 94, 0.4);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        #jsToggleBtn:hover {
+            background-color: #16a34a;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(34, 197, 94, 0.5);
+        }
+
+        /* Side panel - DESKTOP (768px and up) */
+        @media (min-width: 769px) {
+            #jsPanel {
+                position: fixed;
+                top: 0;
+                right: -40%;
+                width: 40%;
+                height: 100%;
+                background-color: #1e293b;
+                z-index: 999;
+                transition: right 0.3s ease;
+                display: flex;
+                flex-direction: column;
+                box-shadow: -5px 0 20px rgba(0,0,0,0.3);
+            }
+            #jsPanel.open {
+                right: 0;
+            }
+        }
+
+        /* Full screen overlay - MOBILE (768px and below) */
+        @media (max-width: 768px) {
+            #jsPanel {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                width: 100%;
+                height: 100%;
+                background-color: #1e293b;
+                z-index: 999;
+                display: none;
+                flex-direction: column;
+            }
+            #jsPanel.open {
+                display: flex;
+            }
+            
+            /* Smaller button on mobile */
+            #jsToggleBtn {
+                bottom: 20px;
+                right: 20px;
+                padding: 12px 16px;
+                font-size: 14px;
+            }
+        }
+
+        /* Panel header */
+        #jsPanelHeader {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background-color: #0f172a;
+            border-bottom: 2px solid #22c55e;
+            flex-shrink: 0;
+        }
+        #jsPanelTitle {
+            color: #22c55e;
+            font-size: 15px;
+            font-weight: 700;
+            font-family: monospace;
+        }
+        #jsPanelClose {
+            background: none;
+            border: none;
+            color: #94a3b8;
+            font-size: 22px;
+            cursor: pointer;
+            padding: 0 5px;
+            line-height: 1;
+            transition: color 0.2s;
+        }
+        #jsPanelClose:hover {
+            color: white;
+        }
+
+        /* Code area */
+        #jsPanelCode {
+            overflow-y: auto;
+            flex: 1;
+            padding: 20px;
+            margin: 0;
+            font-family: monospace;
+            font-size: 13px;
+            line-height: 1.7;
+            color: #e2e8f0;
+            white-space: pre;
+        }
+        
+        /* Mobile code adjustments */
+        @media (max-width: 768px) {
+            #jsPanelCode {
+                font-size: 11px;
+                padding: 15px;
+            }
+        }
+
+        /* Syntax highlighting colors */
+        .js-keyword   { color: #c084fc; }
+        .js-string    { color: #86efac; }
+        .js-comment   { color: #94a3b8; font-style: italic; }
+        .js-number    { color: #fb923c; }
+        .js-function  { color: #60a5fa; }
+    </style>
+
+    <!-- Floating Button -->
+    <button id="jsToggleBtn">
+        <span>{ }</span>
+        <span id="jsToggleBtnText">View JS File</span>
+    </button>
+
+    <!-- Side Panel -->
+    <div id="jsPanel">
+        <div id="jsPanelHeader">
+            <span id="jsPanelTitle">📄 loading...</span>
+            <button id="jsPanelClose">✕</button>
+        </div>
+        <pre id="jsPanelCode">Loading...</pre>
+    </div>
+
+    <script>
+        // ---- CHANGE THIS TO YOUR JS FILE NAME ----
+        const jsFileName = "9.js";
+        // ------------------------------------------
+
+        const panel     = document.getElementById("jsPanel");
+        const toggleBtn = document.getElementById("jsToggleBtn");
+        const btnText   = document.getElementById("jsToggleBtnText");
+        const closeBtn  = document.getElementById("jsPanelClose");
+        const codeEl    = document.getElementById("jsPanelCode");
+        const titleEl   = document.getElementById("jsPanelTitle");
+
+        let loaded = false;
+
+        // Syntax highlighter - processes code token by token to avoid conflicts
+        function highlight(code) {
+            const tokens = [];
+
+            // We process the code character by character, extracting:
+            // 1. Multi-line comments  /* ... */
+            // 2. Single-line comments // ...
+            // 3. Template literals   ` ... `
+            // 4. Double-quoted strings " ... "
+            // 5. Single-quoted strings ' ... '
+            // 6. Everything else (keywords, numbers, plain code)
+
+            let i = 0;
+            let plain = "";
+
+            function flushPlain() {
+                if (!plain) return;
+
+                // Escape HTML
+                let s = plain
+                    .replace(/&/g, "&amp;")
+                    .replace(/</g, "&lt;")
+                    .replace(/>/g, "&gt;");
+
+                // Keywords
+                s = s.replace(/\b(const|let|var|function|return|if|else|for|while|do|class|new|this|typeof|instanceof|import|export|default|async|await|try|catch|finally|throw|switch|case|break|continue|extends|super|static|of|in|true|false|null|undefined)\b/g,
+                    '<span class="js-keyword">$1</span>');
+
+                // Numbers
+                s = s.replace(/\b(\d+\.?\d*)\b/g,
+                    '<span class="js-number">$1</span>');
+
+                tokens.push(s);
+                plain = "";
+            }
+
+            while (i < code.length) {
+                // Multi-line comment /* ... */
+                if (code[i] === "/" && code[i+1] === "*") {
+                    flushPlain();
+                    let end = code.indexOf("*/", i + 2);
+                    if (end === -1) end = code.length - 2;
+                    const comment = code.slice(i, end + 2)
+                        .replace(/&/g, "&amp;")
+                        .replace(/</g, "&lt;")
+                        .replace(/>/g, "&gt;");
+                    tokens.push(`<span class="js-comment">${comment}</span>`);
+                    i = end + 2;
+                    continue;
+                }
+
+                // Single-line comment // ...
+                if (code[i] === "/" && code[i+1] === "/") {
+                    flushPlain();
+                    let end = code.indexOf("\n", i);
+                    if (end === -1) end = code.length;
+                    const comment = code.slice(i, end)
+                        .replace(/&/g, "&amp;")
+                        .replace(/</g, "&lt;")
+                        .replace(/>/g, "&gt;");
+                    tokens.push(`<span class="js-comment">${comment}</span>`);
+                    i = end;
+                    continue;
+                }
+
+                // Template literal ` ... `
+                if (code[i] === "`") {
+                    flushPlain();
+                    let j = i + 1;
+                    while (j < code.length && code[j] !== "`") {
+                        if (code[j] === "\\") j++; // skip escaped char
+                        j++;
+                    }
+                    const str = code.slice(i, j + 1)
+                        .replace(/&/g, "&amp;")
+                        .replace(/</g, "&lt;")
+                        .replace(/>/g, "&gt;");
+                    tokens.push(`<span class="js-string">${str}</span>`);
+                    i = j + 1;
+                    continue;
+                }
+
+                // Double-quoted string " ... "
+                if (code[i] === '"') {
+                    flushPlain();
+                    let j = i + 1;
+                    while (j < code.length && code[j] !== '"') {
+                        if (code[j] === "\\") j++;
+                        j++;
+                    }
+                    const str = code.slice(i, j + 1)
+                        .replace(/&/g, "&amp;")
+                        .replace(/</g, "&lt;")
+                        .replace(/>/g, "&gt;");
+                    tokens.push(`<span class="js-string">${str}</span>`);
+                    i = j + 1;
+                    continue;
+                }
+
+                // Single-quoted string ' ... '
+                if (code[i] === "'") {
+                    flushPlain();
+                    let j = i + 1;
+                    while (j < code.length && code[j] !== "'") {
+                        if (code[j] === "\\") j++;
+                        j++;
+                    }
+                    const str = code.slice(i, j + 1)
+                        .replace(/&/g, "&amp;")
+                        .replace(/</g, "&lt;")
+                        .replace(/>/g, "&gt;");
+                    tokens.push(`<span class="js-string">${str}</span>`);
+                    i = j + 1;
+                    continue;
+                }
+
+                // Everything else - collect as plain text
+                plain += code[i];
+                i++;
+            }
+
+            flushPlain();
+            return tokens.join("");
+        }
+
+        // Open/close panel
+        function togglePanel() {
+            const isOpen = panel.classList.contains("open");
+
+            if (isOpen) {
+                panel.classList.remove("open");
+                document.body.classList.remove("panel-open");
+                btnText.textContent = "View JS File";
+            } else {
+                panel.classList.add("open");
+                document.body.classList.add("panel-open");
+                btnText.textContent = "Close JS File";
+
+                // Load file only once
+                if (!loaded) {
+                    titleEl.textContent = "📄 " + jsFileName;
+                    fetch(jsFileName)
+                        .then(res => {
+                            if (!res.ok) throw new Error("File not found");
+                            return res.text();
+                        })
+                        .then(code => {
+                            codeEl.innerHTML = highlight(code);
+                            loaded = true;
+                        })
+                        .catch(() => {
+                            codeEl.textContent = "❌ Could not load " + jsFileName + "\nMake sure the file is in the same folder as this HTML file.";
+                        });
+                }
+            }
+        }
+
+        toggleBtn.addEventListener("click", togglePanel);
+        closeBtn.addEventListener("click", togglePanel);
+    </script>
+
+    <footer style="text-align: center; padding: 0px; padding-top: 10px; color: #64748b; border-top: 1px solid #e5e7eb; margin-top: 35px;">
+        <p>© 2025 Umer Azmi | <a href="https://github.com/UmerAzmi/javascript-mastery/blob/main/LICENSE" target="_blank" style="color: #22c55e; text-decoration: none;">MIT License</a> </p>
+        <p style="font-size: 14px; margin: 5px 0 0;">JavaScript Mastery Guide - Open Source Learning Platform</p>
+        <p style="color: #64748b; font-size: 13px; margin-bottom: 0;">
+          <a href="https://github.com/UmerAzmi/javascript-mastery" target="_blank" style="color: #22c55e; text-decoration: none;">⭐ Star on GitHub</a>
+        </p>
+    </footer>
 </body>
 </html>
