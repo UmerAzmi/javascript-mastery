@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="https://raw.githubusercontent.com/UmerAzmi/umerazmi/4808b388a23a62988740c6eb078b6d75cab148a9/imgs/js.png">
-    <title>JavaScript - Asynchronous Programming</title>
+    <title>JavaScript Asynchronous Programming</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -143,82 +143,87 @@
         button:active {
             transform: translateY(0);
         }
-        pre{
-            padding: 0;
-            margin: 0;
+        pre {
+                    padding: 0;
+                    margin: 0;
         }
-/* ============= MOBILE RESPONSIVENESS ============= */
+    /* ============= MOBILE RESPONSIVENESS ============= */
 
-    /* Make tables responsive */
-    @media (max-width: 768px) {
-        /* Tables scroll horizontally on mobile */
-        table {
-            display: block;
-            overflow-x: auto;
-            white-space: nowrap;
-            -webkit-overflow-scrolling: touch;
+        /* Make tables responsive */
+        @media (max-width: 768px) {
+            /* Tables scroll horizontally on mobile */
+            table {
+                display: block;
+                overflow-x: auto;
+                white-space: nowrap;
+                -webkit-overflow-scrolling: touch;
+            }
+            
+            /* Smaller font sizes on mobile */
+            body {
+                font-size: 14px;
+                padding: 10px;
+            }
+            
+            section {
+                padding: 15px;
+                margin: 10px 0;
+            }
+            
+            h1 {
+                font-size: 24px !important;
+                padding: 15px !important;
+            }
+            
+            h2 {
+                font-size: 20px;
+            }
+            
+            h3 {
+                font-size: 18px;
+            }
+            
+            /* Syntax boxes scroll horizontally */
+            .syntax-box {
+                overflow-x: auto;
+                font-size: 11px;
+            }
+            
+            /* Make comparison grids stack vertically */
+            .comparison {
+                grid-template-columns: 1fr !important;
+                /* gap: 0px; */
+            }
+            .comparison.twoWays{
+                grid-template-columns: 1fr !important;
+                gap: 0px;
+            }
+            
+            /* Cards grid becomes single column */
+            .cards-grid {
+                grid-template-columns: 1fr !important;
+            }
         }
-        
-        /* Smaller font sizes on mobile */
-        body {
-            font-size: 14px;
-            padding: 10px;
-        }
-        
-        section {
-            padding: 15px;
-            margin: 10px 0;
-        }
-        
-        h1 {
-            font-size: 24px !important;
-            padding: 15px !important;
-        }
-        
-        h2 {
-            font-size: 20px;
-        }
-        
-        h3 {
-            font-size: 18px;
-        }
-        
-        /* Syntax boxes scroll horizontally */
-        .syntax-box {
-            overflow-x: auto;
-            font-size: 11px;
-        }
-        
-        /* Make comparison grids stack vertically */
-        .comparison {
-            grid-template-columns: 1fr !important;
-        }
-        
-        /* Cards grid becomes single column */
-        .cards-grid {
-            grid-template-columns: 1fr !important;
-        }
-    }
 
-    /* Extra small phones */
-    @media (max-width: 480px) {
-        h1 {
-            font-size: 20px !important;
+        /* Extra small phones */
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 20px !important;
+            }
+            
+            table {
+                font-size: 12px;
+            }
+            
+            th, td {
+                padding: 8px;
+            }
         }
-        
-        table {
-            font-size: 12px;
-        }
-        
-        th, td {
-            padding: 8px;
-        }
-    }
     </style>
 
 </head>
 <body>
-    <h1>JavaScript: Asynchronous Programming</h1>
+    <h1>JavaScript Asynchronous Programming</h1>
     <section style="border: 2px dashed #22c55e; padding: 15px 25px; margin: 20px 0; border-radius: 8px; text-align: center; background-color: transparent;">
         <p style="color: #64748b; font-size: 17px; margin: 0 0 6px 0;">📄 Detailed explanations & code examples are in the <strong style="color: #22c55e;">JavaScript (.js) file</strong></p>
         <p style="color: #64748b; font-size: 17px; margin: 0;">👇 Click the <strong style="color: #22c55e;">{ } button</strong> at the bottom right to view it</p>
@@ -504,9 +509,9 @@ task1(() => {
         </table>
 
         <h3>Two Ways to Use Fetch</h3>
-        <div class="comparison">
-            <div class="comparison-item">
-                <h4>Method 1: .then()</h4>
+        <div class="comparison twoWays">
+            <div class="comparison-item twoWays" style="padding-top: 0; padding-bottom: 0;">
+                <h4 style="margin-top: 0;">Method 1: .then()</h4>
                 <div class="syntax-box" style="font-size: 12px;">
                     <pre>
 fetch(url)
@@ -516,8 +521,8 @@ fetch(url)
 </pre>
                     </div>
             </div>
-            <div class="comparison-item">
-                <h4>Method 2: async/await ✅</h4>
+            <div class="comparison-item twoWays" style="padding-top: 0; padding-bottom: 0;">
+                <h4 style="margin-top: 0;">Method 2: async/await ✅</h4>
                 <div class="syntax-box" style="font-size: 12px;">
 <pre>
 <span class="keyword">async function</span> fetchData(){
@@ -905,6 +910,26 @@ fetch(url)
 
         toggleBtn.addEventListener("click", togglePanel);
         closeBtn.addEventListener("click", togglePanel);
+
+        // Hide button near footer on mobile
+        if (window.innerWidth <= 768) {
+            window.addEventListener('scroll', () => {
+                const footer = document.querySelector('footer');
+                const btn = document.getElementById('jsToggleBtn');
+                
+                if (footer) {
+                    const footerTop = footer.getBoundingClientRect().top;
+                    const windowHeight = window.innerHeight;
+                    
+                    // Hide button when footer is visible
+                    if (footerTop < windowHeight) {
+                        btn.style.opacity = '0.3';
+                    } else {
+                        btn.style.opacity = '1';
+                    }
+                }
+            });
+        }
     </script>
 
     <footer style="text-align: center; padding: 0px; padding-top: 10px; color: #64748b; border-top: 1px solid #e5e7eb; margin-top: 35px;">
