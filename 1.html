@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="https://raw.githubusercontent.com/UmerAzmi/umerazmi/4808b388a23a62988740c6eb078b6d75cab148a9/imgs/js.png">
-    <title>JavaScript Basics - Learning</title>
+    <title>JavaScript Basics</title>
     <style>
       body {
         font-family: Arial, sans-serif;
@@ -59,10 +59,82 @@
         border-left: 4px solid #22c55e;
         border-radius: 4px;
       }
+
+      pre{
+            padding: 0;
+            margin: 0;
+        }
+/* ============= MOBILE RESPONSIVENESS ============= */
+
+        /* Make tables responsive */
+        @media (max-width: 768px) {
+            /* Tables scroll horizontally on mobile */
+            table {
+                display: block;
+                overflow-x: auto;
+                white-space: nowrap;
+                -webkit-overflow-scrolling: touch;
+            }
+            
+            /* Smaller font sizes on mobile */
+            body {
+                font-size: 14px;
+                padding: 10px;
+            }
+            
+            section {
+                padding: 15px;
+                margin: 10px 0;
+            }
+            
+            h1 {
+                font-size: 24px !important;
+                padding: 15px !important;
+            }
+            
+            h2 {
+                font-size: 20px;
+            }
+            
+            h3 {
+                font-size: 18px;
+            }
+            
+            /* Syntax boxes scroll horizontally */
+            .syntax-box {
+                overflow-x: auto;
+                font-size: 11px;
+            }
+            
+            /* Make comparison grids stack vertically */
+            .comparison {
+                grid-template-columns: 1fr !important;
+            }
+            
+            /* Cards grid becomes single column */
+            .cards-grid {
+                grid-template-columns: 1fr !important;
+            }
+        }
+
+        /* Extra small phones */
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 20px !important;
+            }
+            
+            table {
+                font-size: 12px;
+            }
+            
+            th, td {
+                padding: 8px;
+            }
+        }
     </style>
   </head>
   <body>
-    <h1 id="h1ID">JavaScript Basics - Practice File</h1>
+    <h1 id="h1ID">JavaScript Basics</h1>
     
     <section style="border: 2px dashed #22c55e; padding: 15px 25px; margin: 20px 0; border-radius: 8px; text-align: center; background-color: transparent;">
         <p style="color: #64748b; font-size: 17px; margin: 0 0 6px 0;">📄 Detailed explanations & code examples are in the <strong style="color: #22c55e;">JavaScript (.js) file</strong></p>
@@ -185,11 +257,13 @@
 
     <!-- Link to JavaScript file -->
     <script src="1.js"></script>
-    <style>
-        /* Shrinks main content when panel is open */
-        body.panel-open {
-            margin-right: 40%;
-            transition: margin-right 0.3s ease;
+        <style>
+        /* Shrinks main content when panel is open (DESKTOP ONLY) */
+        @media (min-width: 769px) {
+            body.panel-open {
+                margin-right: 40%;
+                transition: margin-right 0.3s ease;
+            }
         }
         body {
             transition: margin-right 0.3s ease;
@@ -221,22 +295,52 @@
             box-shadow: 0 6px 20px rgba(34, 197, 94, 0.5);
         }
 
-        /* Side panel */
-        #jsPanel {
-            position: fixed;
-            top: 0;
-            right: -40%;
-            width: 40%;
-            height: 100%;
-            background-color: #1e293b;
-            z-index: 999;
-            transition: right 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            box-shadow: -5px 0 20px rgba(0,0,0,0.3);
+        /* Side panel - DESKTOP (768px and up) */
+        @media (min-width: 769px) {
+            #jsPanel {
+                position: fixed;
+                top: 0;
+                right: -40%;
+                width: 40%;
+                height: 100%;
+                background-color: #1e293b;
+                z-index: 999;
+                transition: right 0.3s ease;
+                display: flex;
+                flex-direction: column;
+                box-shadow: -5px 0 20px rgba(0,0,0,0.3);
+            }
+            #jsPanel.open {
+                right: 0;
+            }
         }
-        #jsPanel.open {
-            right: 0;
+
+        /* Full screen overlay - MOBILE (768px and below) */
+        @media (max-width: 768px) {
+            #jsPanel {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                width: 100%;
+                height: 100%;
+                background-color: #1e293b;
+                z-index: 999;
+                display: none;
+                flex-direction: column;
+            }
+            #jsPanel.open {
+                display: flex;
+            }
+            
+            /* Smaller button on mobile */
+            #jsToggleBtn {
+                bottom: 20px;
+                right: 20px;
+                padding: 12px 16px;
+                font-size: 14px;
+            }
         }
 
         /* Panel header */
@@ -280,6 +384,14 @@
             line-height: 1.7;
             color: #e2e8f0;
             white-space: pre;
+        }
+        
+        /* Mobile code adjustments */
+        @media (max-width: 768px) {
+            #jsPanelCode {
+                font-size: 11px;
+                padding: 15px;
+            }
         }
 
         /* Syntax highlighting colors */
@@ -479,5 +591,13 @@
         toggleBtn.addEventListener("click", togglePanel);
         closeBtn.addEventListener("click", togglePanel);
     </script>
+
+    <footer style="text-align: center; padding: 0px; padding-top: 10px; color: #64748b; border-top: 1px solid #e5e7eb; margin-top: 35px;">
+        <p>© 2025 Umer Azmi | <a href="https://github.com/UmerAzmi/javascript-mastery/blob/main/LICENSE" target="_blank" style="color: #22c55e; text-decoration: none;">MIT License</a> </p>
+        <p style="font-size: 14px; margin: 5px 0 0;">JavaScript Mastery Guide - Open Source Learning Platform</p>
+        <p style="color: #64748b; font-size: 13px; margin-bottom: 0;">
+          <a href="https://github.com/UmerAzmi/javascript-mastery" target="_blank" style="color: #22c55e; text-decoration: none;">⭐ Star on GitHub</a>
+        </p>
+    </footer>
   </body>
 </html>
