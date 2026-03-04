@@ -125,7 +125,7 @@ document.getElementById("callbackHellBtn").onclick = runCallbackHell;
 // Promise = An Object that manages asynchronous operations.
 //           Wrap a Promise Object around {asynchronous code}
 //           "I promise to return a value"
-//           PENDING → RESOLVED or REJECTED
+//           PENDING -> RESOLVED or REJECTED
 //           new Promise((resolve, reject) => {asynchronous code})
 
 // ------------ EXAMPLE 1: Basic Promise ------------
@@ -239,14 +239,14 @@ document.getElementById("promise3Btn").onclick = runPromiseExample3;
 // 1. .then() waits for the Promise returned from the previous step
 
 // Arrow function return rules:
-// 2. () => step2()        → implicit return (automatically returns step2() promise)
-// 3. () => { step2(); }   → block body (returns undefined because no return written)
-// 4. () => { return step2(); } → explicit return (correct, returns the promise)
+// 2. () => step2()        -> implicit return (automatically returns step2() promise)
+// 3. () => { step2(); }   -> block body (returns undefined because no return written)
+// 4. () => { return step2(); } -> explicit return (correct, returns the promise)
 
 // What .then() does:
 // 5. .then() waits only for what is returned from its callback
-// 6. If a Promise is returned → next .then() waits
-// 7. If undefined is returned → next .then() runs immediately (chain breaks)
+// 6. If a Promise is returned -> next .then() waits
+// 7. If undefined is returned -> next .then() runs immediately (chain breaks)
 
 // .catch()
 // 8. .catch() runs if ANY promise in the chain rejects

@@ -253,8 +253,8 @@ myButton2.addEventListener("click", event => {
 });
 
 // Difference:
-// display: none → Image disappears, elements below move up
-// visibility: hidden → Image disappears, but empty space remains
+// display: none - Image disappears, elements below move up
+// visibility: hidden - Image disappears, but empty space remains
 
 
 // ================= TOPIC 47: DOM SELECTORS =================

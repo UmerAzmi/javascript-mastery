@@ -55,10 +55,10 @@ console.log("\n--- Topic 16: Equality Operators ---");
 const PI = 3.14;
 
 // == vs === difference:
-// "3.14" == 3.14   → true (values are equal, ignores type)
-// "3.14" === 3.14  → false (different datatypes: string vs number)
+// "3.14" == 3.14   - true (values are equal, ignores type)
+// "3.14" === 3.14  - false (different datatypes: string vs number)
 
-if(PI === "3.14"){  // 3.14 (number) === "3.14" (string) → false
+if(PI === "3.14"){  // 3.14 (number) === "3.14" (string) - false
     console.log("That is NOT Pi");
 }
 else{
@@ -141,9 +141,9 @@ console.log("\n--- Topic 18: For Loops ---");
 
 // ------- INCREMENT -------
 // i = iterator variable (commonly used name)
-// i = 1 → starting value
-// i <= 10 → continue while this is true
-// i++ → increase i by 1 after each loop
+// i = 1 - starting value
+// i <= 10 - continue while this is true
+// i++ - increase i by 1 after each loop
 for(let i = 1; i <= 10; i++){
     console.log(i);  // Prints: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
 }

@@ -253,8 +253,8 @@
 <body>
     <h1>JavaScript Asynchronous Programming</h1>
     <section style="border: 2px dashed #22c55e; padding: 15px 25px; margin: 20px 0; border-radius: 8px; text-align: center; background-color: transparent;">
-        <p style="color: #64748b; font-size: 17px; margin: 0 0 6px 0;">📄 Detailed explanations & code examples are in the <strong style="color: #22c55e;">JavaScript (.js) file</strong></p>
-        <p style="color: #64748b; font-size: 17px; margin: 0;">👇 Click the <strong style="color: #22c55e;">{ } button</strong> at the bottom right to view it</p>
+        <p style="color: #64748b; font-size: 17px; margin: 0 0 6px 0;">Detailed explanations & code examples are in the <strong style="color: #22c55e;">JavaScript (.js) file</strong></p>
+        <p style="color: #64748b; font-size: 17px; margin: 0;">Click the <strong style="color: #22c55e;">{ } button</strong> at the bottom right to view it</p>
     </section>
     <p style="text-align: center; font-size: 18px; color: #64748b;">
         Master Callbacks, Promises, Async/Await, and Fetch API
@@ -412,9 +412,9 @@ task1(() => {
         <div class="info-box">
             <strong>Important Rules:</strong><br>
             1. <code>.then()</code> waits for Promise before moving foward<br>
-            2. <code>() => step2()</code> → implicit return (returns promise without having to write return)<br>
-            3. <code>() => { step2(); }</code> → returns undefined (if in {} return is required)<br>
-            4. <code>() => { return step2(); }</code> → explicit return (returns promise with having to write return)<br>
+            2. <code>() => step2()</code> - implicit return (returns promise without having to write return)<br>
+            3. <code>() => { step2(); }</code> - returns undefined (if in {} return is required)<br>
+            4. <code>() => { return step2(); }</code> - explicit return (returns promise with having to write return)<br>
             5. <code>.catch()</code> catches ANY rejection in the chain
         </div>
 
@@ -524,7 +524,7 @@ task1(() => {
             </tr>
             <tr>
                 <td><code>response.json()</code></td>
-                <td>Parses JSON → JavaScript object (returns Promise)</td>
+                <td>Parses JSON - JavaScript object (returns Promise)</td>
             </tr>
             <tr>
                 <td><code>response.text()</code></td>

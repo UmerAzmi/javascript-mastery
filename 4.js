@@ -128,8 +128,8 @@ console.log("\n--- Topic 22: Spread Operator ---");
 // ------------- EXAMPLE 1: Spreading array into function arguments -------------
 let numbers = [1, 2, 3, 4, 5];
 
-// Without spread: Math.max([1, 2, 3, 4, 5]) → doesn't work
-// With spread: Math.max(1, 2, 3, 4, 5) → works!
+// Without spread: Math.max([1, 2, 3, 4, 5]) - doesn't work
+// With spread: Math.max(1, 2, 3, 4, 5) - works!
 let maximum = Math.max(...numbers);  // ...numbers unpacks to: 1, 2, 3, 4, 5
 let minimum = Math.min(...numbers);
 
