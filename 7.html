@@ -145,6 +145,34 @@
                     padding: 0;
                     margin: 0;
         }
+        /* ============= CUSTOM SCROLLBAR ============= */
+        ::-webkit-scrollbar { 
+            width: 8px; 
+        }
+
+        ::-webkit-scrollbar-track { 
+            background: #f5f5f5;  
+        }
+
+        ::-webkit-scrollbar-thumb { 
+            background: #22c55e;
+            border-radius: 8px; 
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #16a34a; 
+        }
+
+        ::selection { 
+            background: #22c55e; 
+            color: white; 
+        }
+
+        /* Firefox */
+        * {
+            scrollbar-width: thin;
+            scrollbar-color: #22c55e #f5f5f5;
+        }
     /* ============= MOBILE RESPONSIVENESS ============= */
 
         /* Make tables responsive */
@@ -569,7 +597,7 @@ console.log(json);  <span class="comment">// '{"name":"Umer","age":23}'</span>
                 transition: right 0.3s ease;
                 display: flex;
                 flex-direction: column;
-                box-shadow: -5px 0 20px rgba(0,0,0,0.3);
+                /* box-shadow: -5px 0 20px rgba(0,0,0,0.3); */
             }
             #jsPanel.open {
                 right: 0;
