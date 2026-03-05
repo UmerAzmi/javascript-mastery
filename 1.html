@@ -1,26 +1,26 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="https://raw.githubusercontent.com/UmerAzmi/umerazmi/4808b388a23a62988740c6eb078b6d75cab148a9/imgs/js.png">
     <title>JavaScript Basics</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            max-width: 800px;
+            max-width: 1000px;
             margin: 0 auto;
             padding: 20px;
             background-color: #f5f5f5;
         }
         section {
             background-color: white;
-            padding: 20px;
+            padding: 25px;
             margin: 20px 0;
             border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
-        #h1ID {
+        h1 {
             text-align: center;
             background: linear-gradient(135deg, #22c55e 0%, #10b981 100%);
             color: white;
@@ -30,8 +30,84 @@
         }
         h2 {
             color: #22c55e;
-            border-bottom: 2px solid #22c55e;
+            border-bottom: 3px solid #22c55e;
             padding-bottom: 10px;
+        }
+        h3 {
+            color: #059669;
+            margin-top: 0;
+        }
+        .info-box {
+            background-color: #e0f2fe;
+            border-left: 4px solid #0284c7;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+            line-height: 1.6;
+        }
+        .example-box {
+            background-color: #fef3c7;
+            border-left: 4px solid #f59e0b;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+            line-height: 1.6;
+        }
+        .critical-box {
+            background-color: #fee2e2;
+            border-left: 4px solid #ef4444;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+            line-height: 1.6;
+        }
+        .info-box ul, .example-box ul, .critical-box ul,
+        .info-box ol, .example-box ol, .critical-box ol {
+            margin: 6px 0 2px 0;
+            padding-left: 20px;
+        }
+        .info-box li, .example-box li, .critical-box li {
+            margin-bottom: 3px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #22c55e;
+            color: white;
+        }
+        code {
+            background-color: #f4f4f4;
+            padding: 3px 8px;
+            border-radius: 3px;
+            font-family: monospace;
+            color: #d63384;
+        }
+        .syntax-box {
+            background-color: #1e293b;
+            color: #e2e8f0;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: monospace;
+            margin: 15px 0;
+            overflow-x: auto;
+        }
+        .syntax-box .keyword { color: #c084fc; }
+        .syntax-box .string  { color: #86efac; }
+        .syntax-box .comment { color: #94a3b8; }
+        .syntax-box .number  { color: #fb923c; }
+        pre {
+            padding: 0;
+            margin: 0;
         }
         input {
             padding: 8px;
@@ -40,7 +116,7 @@
             border-radius: 4px;
             width: 200px;
         }
-        button {
+        button.demo-btn {
             background-color: #22c55e;
             color: white;
             padding: 10px 20px;
@@ -49,604 +125,874 @@
             cursor: pointer;
             font-size: 16px;
         }
-        button:hover {
+        button.demo-btn:hover {
             background-color: #16a34a;
         }
         .output {
             background-color: #f0f0f0;
-            padding: 10px;
+            padding: 10px 15px;
             margin: 10px 0;
             border-left: 4px solid #22c55e;
             border-radius: 4px;
         }
-
-        pre{
-            padding: 0;
-            margin: 0;
+        .output p {
+            margin: 4px 0;
         }
 
         /* ============= CUSTOM SCROLLBAR ============= */
-        ::-webkit-scrollbar { 
-            width: 8px; 
-        }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f5f5f5; }
+        ::-webkit-scrollbar-thumb { background: #22c55e; border-radius: 8px; }
+        ::-webkit-scrollbar-thumb:hover { background: #16a34a; }
+        ::selection { background: #22c55e; color: white; }
+        * { scrollbar-width: thin; scrollbar-color: #22c55e #f5f5f5; }
 
-        ::-webkit-scrollbar-track { 
-            background: #f5f5f5;  
-        }
-
-        ::-webkit-scrollbar-thumb { 
-            background: #22c55e;
-            border-radius: 8px; 
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: #16a34a; 
-        }
-
-        ::selection { 
-            background: #22c55e; 
-            color: white; 
-        }
-
-        /* Firefox */
-        * {
-            scrollbar-width: thin;
-            scrollbar-color: #22c55e #f5f5f5;
-        }
-/* ============= MOBILE RESPONSIVENESS ============= */
-
-        /* Make tables responsive */
+        /* ============= MOBILE RESPONSIVENESS ============= */
         @media (max-width: 768px) {
-            /* Tables scroll horizontally on mobile */
-            table {
-                display: block;
-                overflow-x: auto;
-                white-space: nowrap;
-                -webkit-overflow-scrolling: touch;
-            }
-            
-            /* Smaller font sizes on mobile */
-            body {
-                font-size: 14px;
-                padding: 10px;
-            }
-            
-            section {
-                padding: 15px;
-                margin: 10px 0;
-            }
-            
-            h1 {
-                font-size: 24px !important;
-                padding: 15px !important;
-            }
-            
-            h2 {
-                font-size: 20px;
-            }
-            
-            h3 {
-                font-size: 18px;
-            }
-            
-            /* Syntax boxes scroll horizontally */
-            .syntax-box {
-                overflow-x: auto;
-                font-size: 11px;
-            }
-            
-            /* Make comparison grids stack vertically */
-            .comparison {
-                grid-template-columns: 1fr !important;
-            }
-            
-            /* Cards grid becomes single column */
-            .cards-grid {
-                grid-template-columns: 1fr !important;
-            }
+            table { display: block; overflow-x: auto; white-space: nowrap; -webkit-overflow-scrolling: touch; }
+            body { font-size: 14px; padding: 10px; }
+            section { padding: 15px; margin: 10px 0; }
+            h1 { font-size: 24px !important; padding: 15px !important; }
+            h2 { font-size: 20px; }
+            h3 { font-size: 18px; }
+            .syntax-box { overflow-x: auto; font-size: 11px; }
+            .comparison { grid-template-columns: 1fr !important; }
+            .cards-grid { grid-template-columns: 1fr !important; }
         }
-
-        /* Extra small phones */
         @media (max-width: 480px) {
-            h1 {
-                font-size: 20px !important;
-            }
-            
-            table {
-                font-size: 12px;
-            }
-            
-            th, td {
-                padding: 8px;
-            }
+            h1 { font-size: 20px !important; }
+            table { font-size: 12px; }
+            th, td { padding: 8px; }
         }
     </style>
-  </head>
-  <body>
-    <h1 id="h1ID">JavaScript Basics</h1>
-    
-    <section style="border: 2px dashed #22c55e; padding: 15px 25px; margin: 20px 0; border-radius: 8px; text-align: center; background-color: transparent;">
-        <p style="color: #64748b; font-size: 17px; margin: 0 0 6px 0;">Detailed explanations & code examples are in the <strong style="color: #22c55e;">JavaScript (.js) file</strong></p>
-        <p style="color: #64748b; font-size: 17px; margin: 0;">Click the <strong style="color: #22c55e;">{ } button</strong> at the bottom right to view it</p>
-    </section>
+</head>
+<body>
 
-    <p style="text-align: center; font-size: 18px; color: #64748b;">
-      Open the browser console (F12) to see console.log() outputs!
-    </p>
-    <!-- ================= TOPIC 1: OUTPUT & COMMENTS ================= -->
-    <section>
-      <h2>Topic 1: Output & Comments</h2>
-      <p>Check the console and alert boxes when page loads</p>
-      <h1 id="myH1">Original H1 Text</h1>
-      <p id="myP">Original paragraph text</p>
-    </section>
+<h1>JavaScript Basics</h1>
 
-    <!-- ================= TOPIC 2: VARIABLES ================= -->
-    <section>
-      <h2>Topic 2: Variables</h2>
-      <div class="output">
-        <p id="var-p1">Name will appear here</p>
-        <p id="var-p2">Age will appear here</p>
-        <p id="var-p3">Student status will appear here</p>
-      </div>
-    </section>
+<section style="border: 2px dashed #22c55e; padding: 15px 25px; margin: 20px 0; border-radius: 8px; text-align: center; background-color: transparent;">
+    <p style="color: #64748b; font-size: 17px; margin: 0 0 6px 0;">Detailed explanations & code examples are in the <strong style="color: #22c55e;">JavaScript (.js) file</strong></p>
+    <p style="color: #64748b; font-size: 17px; margin: 0;">Click the <strong style="color: #22c55e;">{ } button</strong> at the bottom right to view it</p>
+</section>
 
-    <!-- ================= TOPIC 3: ARITHMETIC OPERATORS ================= -->
-    <section>
-      <h2>Topic 3: Arithmetic Operators</h2>
-      <p>Check the console to see the result of arithmetic operations</p>
-      <div class="output">
-        <p>Result is calculated in console</p>
-        <p>Operator precedence example: 6 / 2 * (1 + 2)</p>
-      </div>
-    </section>
+<p style="text-align: center; font-size: 18px; color: #64748b;">
+    Master the Fundamentals: Output, Variables, Operators, Input & More
+</p>
 
-    <!-- ================= TOPIC 4: USER INPUT ================= -->
-    <section>
-      <h2>Topic 4: User Input</h2>
-      <label for="myText">Enter your username:</label><br />
-      <input type="text" id="myText" placeholder="Your username" />
-      <button id="mySubmit">Submit</button>
-      <div class="output">
-        <h1 id="myH1-topic4">Greeting will appear here</h1>
-      </div>
-    </section>
 
-    <!-- ================= TOPIC 5: TYPE CONVERSION ================= -->
-    <section>
-      <h2>Topic 5: Type Conversion</h2>
-      <p>Check the console to see type conversion examples</p>
-      <div class="output">
-        <p>Example 1: window.prompt returns a string, we convert to number</p>
-        <p>Example 2: Converting "pizza" to different types</p>
+<!-- ================= TOPIC 1: OUTPUT & COMMENTS ================= -->
+<section>
+    <h2>Topic 1: Output & Comments</h2>
+    <p>JavaScript has multiple ways to display output and document your code with comments</p>
+
+    <div class="critical-box">
+        <strong>3 Ways to Show Output in JavaScript:</strong>
         <ul>
-          <li>Number("pizza") = NaN</li>
-          <li>String("pizza") = "pizza"</li>
-          <li>Boolean("pizza") = true</li>
+            <li><code>console.log()</code> - Prints to the browser console (F12 to open). Best for debugging</li>
+            <li><code>window.alert()</code> - Shows a popup box. Use sparingly as it blocks the page</li>
+            <li><code>document.getElementById().textContent</code> - Changes text inside an HTML element. The professional way</li>
         </ul>
-      </div>
-    </section>
-
-    <!-- ================= TOPIC 6: CONSTANTS ================= -->
-    <section>
-      <h2>Topic 6: Constants (Circle Circumference Calculator)</h2>
-      <label for="myText2">Enter radius:</label><br />
-      <input type="text" id="myText2" placeholder="Enter radius" />
-      <button id="mySubmit2">Calculate</button>
-      <div class="output">
-        <h3 id="myH3">Circumference will appear here</h3>
-      </div>
-      <p>
-        <strong>Note:</strong> PI is a constant (const) and cannot be changed
-      </p>
-    </section>
-
-    <!-- ================= TOPIC 7: MATH OBJECT ================= -->
-    <section>
-      <h2>Topic 7: Math Object</h2>
-      <p>Check the console to see Math object examples</p>
-      <div class="output">
-        <h3>Common Math Methods:</h3>
-        <ul>
-          <li><strong>Math.round()</strong> - Round to nearest integer</li>
-          <li><strong>Math.floor()</strong> - Round down</li>
-          <li><strong>Math.ceil()</strong> - Round up</li>
-          <li><strong>Math.trunc()</strong> - Remove decimal</li>
-          <li><strong>Math.pow(x, y)</strong> - x to the power of y</li>
-          <li><strong>Math.sqrt()</strong> - Square root</li>
-          <li><strong>Math.abs()</strong> - Absolute value</li>
-          <li><strong>Math.max()</strong> - Largest number</li>
-          <li><strong>Math.min()</strong> - Smallest number</li>
-        </ul>
-      </div>
-    </section>
-
-      <section style="background-color: white; padding: 20px; margin: 20px 0; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-        <div style="display: flex; justify-content: center; align-items: center; gap: 20px;">
-            <a href="index.html" style="text-decoration: none;">
-                <button style="background-color: #64748b; color: white; padding: 12px 24px; border: none; border-radius: 4px; cursor: pointer; font-size: 16px;">
-                    ← 
-                </button>
-            </a>
-            
-            <a href="index.html" style="text-decoration: none;">
-                <button style="background-color: #22c55e; color: white; padding: 12px 24px; border: none; border-radius: 4px; cursor: pointer; font-size: 16px;">
-                    🏠 Home
-                </button>
-            </a>
-            
-            <a href="2.html" style="text-decoration: none;">
-                <button style="background-color: #3b82f6; color: white; padding: 12px 24px; border: none; border-radius: 4px; cursor: pointer; font-size: 16px;">
-                     →
-                </button>
-            </a>
-        </div>
-    </section>
-
-
-    <!-- Link to JavaScript file -->
-    <script src="1.js"></script>
-    <style>
-        /* Shrinks main content when panel is open (DESKTOP ONLY) */
-        @media (min-width: 769px) {
-            body.panel-open {
-                margin-right: 40%;
-                transition: margin-right 0.3s ease;
-            }
-        }
-        body {
-            transition: margin-right 0.3s ease;
-        }
-
-        /* Floating button - bottom right corner */
-        #jsToggleBtn {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background-color: #22c55e;
-            color: white;
-            border: none;
-            padding: 14px 20px;
-            border-radius: 50px;
-            cursor: pointer;
-            font-size: 15px;
-            font-weight: 700;
-            /* box-shadow: 0 4px 15px rgba(34, 197, 94, 0.4); */
-            z-index: 1000;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        #jsToggleBtn:hover {
-            background-color: #16a34a;
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(34, 197, 94, 0.5);
-        }
-
-        /* Side panel - DESKTOP (768px and up) */
-        @media (min-width: 769px) {
-            #jsPanel {
-                position: fixed;
-                top: 0;
-                right: -40%;
-                width: 40%;
-                height: 100%;
-                background-color: #1e293b;
-                z-index: 999;
-                transition: right 0.3s ease;
-                display: flex;
-                flex-direction: column;
-                /* box-shadow: -5px 0 20px rgba(0,0,0,0.3); */
-            }
-            #jsPanel.open {
-                right: 0;
-            }
-        }
-
-        /* Full screen overlay - MOBILE (768px and below) */
-        @media (max-width: 768px) {
-            #jsPanel {
-                position: fixed;
-                top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                width: 100%;
-                height: 100%;
-                background-color: #1e293b;
-                z-index: 999;
-                display: none;
-                flex-direction: column;
-            }
-            #jsPanel.open {
-                display: flex;
-            }
-            
-            /* Smaller button on mobile */
-            #jsToggleBtn {
-                bottom: 20px;
-                right: 20px;
-                padding: 12px 16px;
-                font-size: 14px;
-            }
-        }
-
-        /* Panel header */
-        #jsPanelHeader {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 20px;
-            background-color: #0f172a;
-            border-bottom: 2px solid #22c55e;
-            flex-shrink: 0;
-        }
-        #jsPanelTitle {
-            color: #22c55e;
-            font-size: 15px;
-            font-weight: 700;
-            font-family: monospace;
-        }
-        #jsPanelClose {
-            background: none;
-            border: none;
-            color: #94a3b8;
-            font-size: 22px;
-            cursor: pointer;
-            padding: 0 5px;
-            line-height: 1;
-            transition: color 0.2s;
-        }
-        #jsPanelClose:hover {
-            color: white;
-        }
-
-        /* Code area */
-        #jsPanelCode {
-            overflow-y: auto;
-            flex: 1;
-            padding: 20px;
-            margin: 0;
-            font-family: monospace;
-            font-size: 13px;
-            line-height: 1.7;
-            color: #e2e8f0;
-            white-space: pre;
-        }
-        
-        /* Mobile code adjustments */
-        @media (max-width: 768px) {
-            #jsPanelCode {
-                font-size: 11px;
-                padding: 15px;
-            }
-        }
-
-        /* Syntax highlighting colors */
-        .js-keyword   { color: #c084fc; }
-        .js-string    { color: #86efac; }
-        .js-comment   { color: #94a3b8; font-style: italic; }
-        .js-number    { color: #fb923c; }
-        .js-function  { color: #60a5fa; }
-    </style>
-
-    <!-- Floating Button -->
-    <button id="jsToggleBtn">
-        <span>{ }</span>
-        <span id="jsToggleBtnText">View JS File</span>
-    </button>
-
-    <!-- Side Panel -->
-    <div id="jsPanel">
-        <div id="jsPanelHeader">
-            <span id="jsPanelTitle">📄 loading...</span>
-            <button id="jsPanelClose">✕</button>
-        </div>
-        <pre id="jsPanelCode">Loading...</pre>
     </div>
 
-    <script>
-        // ---- CHANGE THIS TO YOUR JS FILE NAME ----
-        const jsFileName = "1.js";
-        // ------------------------------------------
+    <div class="syntax-box">
+        <pre>
+<span class="comment">// console.log() - prints to browser console</span>
+console.log(<span class="string">"Hello, World!"</span>);
 
-        const panel     = document.getElementById("jsPanel");
-        const toggleBtn = document.getElementById("jsToggleBtn");
-        const btnText   = document.getElementById("jsToggleBtnText");
-        const closeBtn  = document.getElementById("jsPanelClose");
-        const codeEl    = document.getElementById("jsPanelCode");
-        const titleEl   = document.getElementById("jsPanelTitle");
+<span class="comment">// window.alert() - shows a popup box</span>
+window.alert(<span class="string">"This is an alert!"</span>);
 
-        let loaded = false;
+<span class="comment">// document.getElementById() - changes HTML element text</span>
+document.<span class="keyword">getElementById</span>(<span class="string">"myH1"</span>).textContent = <span class="string">"Hello"</span>;
+</pre>
+    </div>
 
-        // Syntax highlighter - processes code token by token to avoid conflicts
-        function highlight(code) {
-            const tokens = [];
+    <h3>Comments</h3>
+    <div class="info-box">
+        <strong>2 Types of Comments:</strong><br>
+        • <strong>Single-line:</strong> <code>// This is a comment</code> - anything after <code>//</code> is ignored<br>
+        • <strong>Multi-line:</strong> <code>/* This spans multiple lines */</code> - use for longer explanations<br><br>
+        <strong>Why use comments?</strong> To explain your code to yourself and others. Good code is well-commented!
+    </div>
 
-            // We process the code character by character, extracting:
-            // 1. Multi-line comments  /* ... */
-            // 2. Single-line comments // ...
-            // 3. Template literals   ` ... `
-            // 4. Double-quoted strings " ... "
-            // 5. Single-quoted strings ' ... '
-            // 6. Everything else (keywords, numbers, plain code)
+    <table>
+        <tr>
+            <th>Method</th>
+            <th>Where Output Goes</th>
+            <th>Best Used For</th>
+        </tr>
+        <tr>
+            <td><code>console.log()</code></td>
+            <td>Browser Console (F12)</td>
+            <td>Debugging, testing values</td>
+        </tr>
+        <tr>
+            <td><code>window.alert()</code></td>
+            <td>Popup dialog box</td>
+            <td>Simple notifications (use rarely)</td>
+        </tr>
+        <tr>
+            <td><code>document.getElementById().textContent</code></td>
+            <td>Inside an HTML element</td>
+            <td>Displaying results on the webpage</td>
+        </tr>
+    </table>
 
-            let i = 0;
-            let plain = "";
+    <div class="example-box">
+        <h3>Output to HTML:</h3>
+        <p style="margin: 0 0 6px 0; color: #92400e; font-size: 13px;">The JS file ran <code>document.getElementById().textContent</code> on page load:</p>
+        <div class="output">
+            <p id="myH1-demo" style="margin: 0; font-size: 17px; font-weight: bold; color: #374151;">Loading...</p>
+        </div>
+    </div>
 
-            function flushPlain() {
-                if (!plain) return;
+    <div class="example-box">
+        <h3>Examples in JS File:</h3>
+        <ul>
+            <li><strong>Example 1:</strong> <code>console.log()</code> - printing messages to the console</li>
+            <li><strong>Example 2:</strong> <code>window.alert()</code> - displaying a popup alert</li>
+            <li><strong>Example 3:</strong> <code>document.getElementById().textContent</code> - updating HTML elements</li>
+            <li><strong>Example 4:</strong> Both single-line and multi-line comments</li>
+        </ul>
+    </div>
+</section>
 
-                // Escape HTML
-                let s = plain
-                    .replace(/&/g, "&amp;")
-                    .replace(/</g, "&lt;")
-                    .replace(/>/g, "&gt;");
 
-                // Keywords
-                s = s.replace(/\b(const|let|var|function|return|if|else|for|while|do|class|new|this|typeof|instanceof|import|export|default|async|await|try|catch|finally|throw|switch|case|break|continue|extends|super|static|of|in|true|false|null|undefined)\b/g,
-                    '<span class="js-keyword">$1</span>');
+<!-- ================= TOPIC 2: VARIABLES ================= -->
+<section>
+    <h2>Topic 2: Variables</h2>
+    <p>Variables are named containers that store data values - like labelled boxes that hold information</p>
 
-                // Numbers
-                s = s.replace(/\b(\d+\.?\d*)\b/g,
-                    '<span class="js-number">$1</span>');
+    <div class="info-box">
+        <strong>3 Ways to Declare Variables:</strong><br>
+        • <code>let</code> - Can be changed later. Use this most of the time<br>
+        • <code>const</code> - Cannot be changed (covered in Topic 6)<br>
+        • <code>var</code> - Old way, avoid using it in modern JavaScript
+    </div>
 
-                tokens.push(s);
-                plain = "";
-            }
+    <div class="syntax-box">
+        <pre>
+<span class="keyword">let</span> fullName = <span class="string">"Umer Azmi"</span>;   <span class="comment">// String - text, always in quotes</span>
+<span class="keyword">let</span> age = <span class="number">23</span>;               <span class="comment">// Number - no quotes needed</span>
+<span class="keyword">let</span> isStudent = <span class="keyword">false</span>;      <span class="comment">// Boolean - only true or false</span>
 
-            while (i < code.length) {
-                // Multi-line comment /* ... */
-                if (code[i] === "/" && code[i+1] === "*") {
-                    flushPlain();
-                    let end = code.indexOf("*/", i + 2);
-                    if (end === -1) end = code.length - 2;
-                    const comment = code.slice(i, end + 2)
-                        .replace(/&/g, "&amp;")
-                        .replace(/</g, "&lt;")
-                        .replace(/>/g, "&gt;");
-                    tokens.push(`<span class="js-comment">${comment}</span>`);
-                    i = end + 2;
-                    continue;
-                }
+<span class="comment">// Template literals - use backticks `` and ${} to embed variables</span>
+console.log(<span class="string">`Hello, my name is ${fullName}`</span>);
+console.log(<span class="string">`I am ${age} years old`</span>);
+</pre>
+    </div>
 
-                // Single-line comment // ...
-                if (code[i] === "/" && code[i+1] === "/") {
-                    flushPlain();
-                    let end = code.indexOf("\n", i);
-                    if (end === -1) end = code.length;
-                    const comment = code.slice(i, end)
-                        .replace(/&/g, "&amp;")
-                        .replace(/</g, "&lt;")
-                        .replace(/>/g, "&gt;");
-                    tokens.push(`<span class="js-comment">${comment}</span>`);
-                    i = end;
-                    continue;
-                }
+    <h3>JavaScript Data Types</h3>
+    <table>
+        <tr>
+            <th>Data Type</th>
+            <th>Example</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td>String</td>
+            <td><code>"Hello"</code> or <code>'Hello'</code></td>
+            <td>Text - must be wrapped in quotes</td>
+        </tr>
+        <tr>
+            <td>Number</td>
+            <td><code>42</code> or <code>3.14</code></td>
+            <td>Any number - integers and decimals</td>
+        </tr>
+        <tr>
+            <td>Boolean</td>
+            <td><code>true</code> or <code>false</code></td>
+            <td>Only two possible values</td>
+        </tr>
+        <tr>
+            <td>Undefined</td>
+            <td><code>let x;</code></td>
+            <td>Variable declared but not assigned a value</td>
+        </tr>
+        <tr>
+            <td>Null</td>
+            <td><code>let x = null;</code></td>
+            <td>Intentionally empty / no value</td>
+        </tr>
+    </table>
 
-                // Template literal ` ... `
-                if (code[i] === "`") {
-                    flushPlain();
-                    let j = i + 1;
-                    while (j < code.length && code[j] !== "`") {
-                        if (code[j] === "\\") j++; // skip escaped char
-                        j++;
-                    }
-                    const str = code.slice(i, j + 1)
-                        .replace(/&/g, "&amp;")
-                        .replace(/</g, "&lt;")
-                        .replace(/>/g, "&gt;");
-                    tokens.push(`<span class="js-string">${str}</span>`);
-                    i = j + 1;
-                    continue;
-                }
+    <div class="info-box">
+        <strong>Template Literals <code>` `</code></strong><br>
+        Use backticks (not quotes!) to create strings that can include variables:<br>
+        <code>`Hello, my name is ${fullName} and I am ${age} years old`</code><br><br>
+        The <code>${}</code> syntax is called <strong>string interpolation</strong> - it inserts the variable's value directly into the string.
+    </div>
 
-                // Double-quoted string " ... "
-                if (code[i] === '"') {
-                    flushPlain();
-                    let j = i + 1;
-                    while (j < code.length && code[j] !== '"') {
-                        if (code[j] === "\\") j++;
-                        j++;
-                    }
-                    const str = code.slice(i, j + 1)
-                        .replace(/&/g, "&amp;")
-                        .replace(/</g, "&lt;")
-                        .replace(/>/g, "&gt;");
-                    tokens.push(`<span class="js-string">${str}</span>`);
-                    i = j + 1;
-                    continue;
-                }
+    <div class="example-box">
+        <h3>Variables - Example:</h3>
+        <div class="output">
+            <p id="var-p1">Name will appear here</p>
+            <p id="var-p2">Age will appear here</p>
+            <p id="var-p3">Student status will appear here</p>
+        </div>
+    </div>
 
-                // Single-quoted string ' ... '
-                if (code[i] === "'") {
-                    flushPlain();
-                    let j = i + 1;
-                    while (j < code.length && code[j] !== "'") {
-                        if (code[j] === "\\") j++;
-                        j++;
-                    }
-                    const str = code.slice(i, j + 1)
-                        .replace(/&/g, "&amp;")
-                        .replace(/</g, "&lt;")
-                        .replace(/>/g, "&gt;");
-                    tokens.push(`<span class="js-string">${str}</span>`);
-                    i = j + 1;
-                    continue;
-                }
+    <div class="example-box">
+        <h3>Examples in JS File:</h3>
+        <ul>
+            <li><strong>Example 1:</strong> Declaring variables with <code>let</code> for different data types</li>
+            <li><strong>Example 2:</strong> Using template literals to display variable values in HTML</li>
+            <li><strong>Example 3:</strong> Difference between <code>let</code>, <code>const</code>, and <code>var</code></li>
+        </ul>
+    </div>
+</section>
 
-                // Everything else - collect as plain text
-                plain += code[i];
-                i++;
-            }
 
-            flushPlain();
-            return tokens.join("");
+<!-- ================= TOPIC 3: ARITHMETIC OPERATORS ================= -->
+<section>
+    <h2>Topic 3: Arithmetic Operators</h2>
+    <p>Operators are symbols that perform operations on values. Arithmetic operators perform math</p>
+
+    <table>
+        <tr>
+            <th>Operator</th>
+            <th>Name</th>
+            <th>Example</th>
+            <th>Result</th>
+        </tr>
+        <tr>
+            <td><code>+</code></td>
+            <td>Addition</td>
+            <td><code>10 + 3</code></td>
+            <td><code>13</code></td>
+        </tr>
+        <tr>
+            <td><code>-</code></td>
+            <td>Subtraction</td>
+            <td><code>10 - 3</code></td>
+            <td><code>7</code></td>
+        </tr>
+        <tr>
+            <td><code>*</code></td>
+            <td>Multiplication</td>
+            <td><code>10 * 3</code></td>
+            <td><code>30</code></td>
+        </tr>
+        <tr>
+            <td><code>/</code></td>
+            <td>Division</td>
+            <td><code>10 / 3</code></td>
+            <td><code>3.333...</code></td>
+        </tr>
+        <tr>
+            <td><code>**</code></td>
+            <td>Exponent (Power)</td>
+            <td><code>10 ** 3</code></td>
+            <td><code>1000</code></td>
+        </tr>
+        <tr>
+            <td><code>%</code></td>
+            <td>Modulo (Remainder)</td>
+            <td><code>10 % 3</code></td>
+            <td><code>1</code></td>
+        </tr>
+    </table>
+
+    <h3>Shorthand & Increment Operators</h3>
+    <table>
+        <tr>
+            <th>Shorthand</th>
+            <th>Same As</th>
+            <th>Increment/Decrement</th>
+            <th>Same As</th>
+        </tr>
+        <tr>
+            <td><code>x += 5</code></td>
+            <td><code>x = x + 5</code></td>
+            <td><code>x++</code></td>
+            <td><code>x = x + 1</code></td>
+        </tr>
+        <tr>
+            <td><code>x -= 5</code></td>
+            <td><code>x = x - 5</code></td>
+            <td><code>x--</code></td>
+            <td><code>x = x - 1</code></td>
+        </tr>
+        <tr>
+            <td><code>x *= 5</code></td>
+            <td><code>x = x * 5</code></td>
+            <td>-</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td><code>x /= 5</code></td>
+            <td><code>x = x / 5</code></td>
+            <td>-</td>
+            <td>-</td>
+        </tr>
+    </table>
+
+    <div class="critical-box">
+        <strong>⚠️ Operator Precedence (Order of Operations):</strong><br>
+        JavaScript follows PEMDAS/BODMAS just like math:<br>
+        <ol>
+            <li>Parentheses <code>()</code></li>
+            <li>Exponents <code>**</code></li>
+            <li>Multiplication <code>*</code>, Division <code>/</code>, Modulo <code>%</code></li>
+            <li>Addition <code>+</code>, Subtraction <code>-</code></li>
+        </ol>
+        <strong>Example:</strong> <code>6 / 2 * (1 + 2)</code> = <code>6 / 2 * 3</code> = <code>3 * 3</code> = <strong>9</strong> (not 1!)
+    </div>
+
+    <div class="info-box">
+        <strong>What is Modulo <code>%</code>?</strong><br>
+        Modulo gives you the <strong>remainder</strong> after division.<br>
+        <code>10 % 3 = 1</code> because 3 goes into 10 three times (3×3=9), with <strong>1 left over</strong>.<br>
+        Common use: Check if a number is even - <code>num % 2 === 0</code> means it's even!
+    </div>
+
+    <div class="example-box">
+        <h3>Examples in JS File:</h3>
+        <ul>
+            <li><strong>Example 1:</strong> All 6 arithmetic operators in action</li>
+            <li><strong>Example 2:</strong> Shorthand operators (<code>+=</code>, <code>-=</code>, <code>*=</code>, etc.)</li>
+            <li><strong>Example 3:</strong> Increment <code>++</code> and Decrement <code>--</code></li>
+            <li><strong>Example 4:</strong> Operator precedence - <code>6 / 2 * (1 + 2)</code></li>
+        </ul>
+    </div>
+</section>
+
+
+<!-- ================= TOPIC 4: USER INPUT ================= -->
+<section>
+    <h2>Topic 4: User Input</h2>
+    <p>There are two ways to accept input from users in JavaScript</p>
+
+    <div class="info-box">
+        <strong>2 Ways to Get User Input:</strong><br>
+        • <strong>Easy way:</strong> <code>window.prompt()</code> - shows a popup input box. Simple but looks ugly<br>
+        • <strong>Professional way:</strong> HTML <code>&lt;input&gt;</code> + <code>.value</code> - styled input field on the page. The real-world approach
+    </div>
+
+    <div class="syntax-box">
+        <pre>
+<span class="comment">// EASY WAY - prompt popup</span>
+<span class="keyword">let</span> username = window.prompt(<span class="string">"What's your name?"</span>);
+
+<span class="comment">// PROFESSIONAL WAY - HTML input + button click</span>
+document.<span class="keyword">getElementById</span>(<span class="string">"mySubmit"</span>).onclick = <span class="keyword">function</span>() {
+    <span class="keyword">let</span> username = document.<span class="keyword">getElementById</span>(<span class="string">"myText"</span>).value;
+    document.<span class="keyword">getElementById</span>(<span class="string">"greeting"</span>).textContent = <span class="string">`Hello ${username}!`</span>;
+}
+</pre>
+    </div>
+
+    <table>
+        <tr>
+            <th>Concept</th>
+            <th>Syntax</th>
+            <th>What It Does</th>
+        </tr>
+        <tr>
+            <td>Get input value</td>
+            <td><code>element.value</code></td>
+            <td>Reads the current text in an input field</td>
+        </tr>
+        <tr>
+            <td>Button click handler</td>
+            <td><code>element.onclick = function(){}</code></td>
+            <td>Runs code when button is clicked</td>
+        </tr>
+        <tr>
+            <td>Anonymous function</td>
+            <td><code>function(){}</code></td>
+            <td>A function with no name, used inline</td>
+        </tr>
+        <tr>
+            <td>Prompt popup</td>
+            <td><code>window.prompt("message")</code></td>
+            <td>Shows a dialog box asking for input</td>
+        </tr>
+    </table>
+
+    <div class="example-box">
+        <h3>User Input - Example:</h3>
+        <label for="myText">Enter your username:</label><br>
+        <input type="text" id="myText" placeholder="Your username">
+        <button class="demo-btn" id="mySubmit">Submit</button>
+        <div class="output">
+            <h3 id="myH1-topic4" style="margin-top: 10px;">Greeting will appear here</h3>
+        </div>
+    </div>
+
+    <div class="example-box">
+        <h3>Examples in JS File:</h3>
+        <ul>
+            <li><strong>Example 1:</strong> Using <code>window.prompt()</code> to get input</li>
+            <li><strong>Example 2:</strong> Using an HTML input + button with <code>.onclick</code></li>
+            <li><strong>Example 3:</strong> Reading <code>.value</code> and displaying it with a template literal</li>
+        </ul>
+    </div>
+</section>
+
+
+<!-- ================= TOPIC 5: TYPE CONVERSION ================= -->
+<section>
+    <h2>Topic 5: Type Conversion</h2>
+    <p>Converting a value from one data type to another - essential when working with user input</p>
+
+    <div class="critical-box">
+        <strong>⚠️ Why You Need Type Conversion:</strong><br>
+        <code>window.prompt()</code> and HTML inputs <strong>always return strings</strong>, even if the user types a number.<br>
+        So <code>"5" + 3</code> gives <code>"53"</code> (string concatenation), not <code>8</code> (math)!<br>
+        You must convert to <code>Number()</code> first before doing math.
+    </div>
+
+    <div class="syntax-box">
+        <pre>
+<span class="comment">// Number() - converts to a number</span>
+<span class="keyword">let</span> age = Number(<span class="string">"23"</span>);      <span class="comment">// "23" - 23 (number)</span>
+<span class="keyword">let</span> fail = Number(<span class="string">"pizza"</span>); <span class="comment">// "pizza" - NaN (Not a Number)</span>
+
+<span class="comment">// String() - converts to a string (text)</span>
+<span class="keyword">let</span> str = String(<span class="number">42</span>);       <span class="comment">// 42 - "42"</span>
+
+<span class="comment">// Boolean() - converts to true or false</span>
+<span class="keyword">let</span> b1 = Boolean(<span class="string">"pizza"</span>); <span class="comment">// any non-empty string - true</span>
+<span class="keyword">let</span> b2 = Boolean(<span class="string">""</span>);      <span class="comment">// empty string - false</span>
+<span class="keyword">let</span> b3 = Boolean(<span class="number">0</span>);       <span class="comment">// 0 - false</span>
+</pre>
+    </div>
+
+    <table>
+        <tr>
+            <th>Function</th>
+            <th>Converts To</th>
+            <th>Falsy Values (become false)</th>
+        </tr>
+        <tr>
+            <td><code>Number(value)</code></td>
+            <td>Number</td>
+            <td>Can return <code>NaN</code> if not convertible</td>
+        </tr>
+        <tr>
+            <td><code>String(value)</code></td>
+            <td>String (text)</td>
+            <td>Always succeeds</td>
+        </tr>
+        <tr>
+            <td><code>Boolean(value)</code></td>
+            <td>Boolean</td>
+            <td><code>0</code>, <code>""</code>, <code>null</code>, <code>undefined</code>, <code>NaN</code></td>
+        </tr>
+    </table>
+
+    <div class="info-box">
+        <strong><code>typeof</code> Operator:</strong><br>
+        Use <code>typeof</code> to check what data type a variable is:<br>
+        <code>typeof "hello"</code> - <code>"string"</code><br>
+        <code>typeof 42</code> - <code>"number"</code><br>
+        <code>typeof true</code> - <code>"boolean"</code><br>
+        <code>typeof undefined</code> - <code>"undefined"</code>
+    </div>
+
+    <div class="info-box">
+        <strong>What is <code>NaN</code>?</strong><br>
+        NaN stands for <strong>Not a Number</strong>. It appears when you try to do math with something that can't be converted to a number (like <code>Number("pizza")</code>).<br>
+        Interestingly, <code>typeof NaN</code> is <code>"number"</code> - it's a numeric error value!
+    </div>
+
+    <div class="example-box">
+        <h3>Examples in JS File:</h3>
+        <ul>
+            <li><strong>Example 1:</strong> <code>window.prompt()</code> returns a string - convert to number to do math</li>
+            <li><strong>Example 2:</strong> Converting <code>"pizza"</code> to all three types and checking with <code>typeof</code></li>
+            <li><strong>Example 3:</strong> Truthy and falsy values with <code>Boolean()</code></li>
+        </ul>
+    </div>
+</section>
+
+
+<!-- ================= TOPIC 6: CONSTANTS ================= -->
+<section>
+    <h2>Topic 6: Constants</h2>
+    <p>Constants are variables that cannot be changed after they are set</p>
+
+    <div class="info-box">
+        <strong>When to Use <code>const</code>:</strong><br>
+        Use <code>const</code> for values that should <strong>never change</strong> - like mathematical constants (PI), configuration values, or fixed references.<br>
+        By convention, constant names are written in <strong>ALL_CAPS</strong> (e.g., <code>PI</code>, <code>MAX_SIZE</code>).
+    </div>
+
+    <div class="syntax-box">
+        <pre>
+<span class="comment">// const = cannot be reassigned after declaration</span>
+<span class="keyword">const</span> PI = <span class="number">3.14159</span>;
+
+<span class="comment">// This would throw an ERROR:</span>
+<span class="comment">// PI = 420; ❌ TypeError: Assignment to constant variable</span>
+
+<span class="comment">// Use const for things that won't change</span>
+<span class="keyword">let</span> radius = <span class="number">7</span>;
+<span class="keyword">let</span> circumference = <span class="number">2</span> * PI * radius; <span class="comment">// 43.98...</span>
+</pre>
+    </div>
+
+    <table>
+        <tr>
+            <th>Keyword</th>
+            <th>Can Be Reassigned?</th>
+            <th>Best Used For</th>
+        </tr>
+        <tr>
+            <td><code>let</code></td>
+            <td>✅ Yes</td>
+            <td>Values that change (scores, user input, counters)</td>
+        </tr>
+        <tr>
+            <td><code>const</code></td>
+            <td>❌ No</td>
+            <td>Fixed values (PI, tax rates, app config)</td>
+        </tr>
+        <tr>
+            <td><code>var</code></td>
+            <td>✅ Yes</td>
+            <td>Avoid - old way with confusing scoping rules</td>
+        </tr>
+    </table>
+
+    <div class="example-box">
+        <h3>Constants - Example:</h3>
+        <label for="myText2">Enter radius (cm):</label><br>
+        <input type="text" id="myText2" placeholder="e.g. 7">
+        <button class="demo-btn" id="mySubmit2">Calculate</button>
+        <div class="output">
+            <h3 id="myH3" style="margin-top: 10px;">Circumference will appear here</h3>
+        </div>
+        <p><strong>Note:</strong> PI is a <code>const</code> - it cannot be changed. The formula is <code>2 × π × r</code></p>
+    </div>
+
+    <div class="example-box">
+        <h3>Examples in JS File:</h3>
+        <ul>
+            <li><strong>Example 1:</strong> Declaring <code>const PI</code> and seeing what happens when you try to change it</li>
+            <li><strong>Example 2:</strong> Building a circumference calculator using <code>const</code> and <code>let</code> together</li>
+        </ul>
+    </div>
+</section>
+
+
+<!-- ================= TOPIC 7: MATH OBJECT ================= -->
+<section>
+    <h2>Topic 7: Math Object</h2>
+    <p>JavaScript's built-in <code>Math</code> object provides properties and methods for mathematical operations</p>
+
+    <div class="info-box">
+        <strong>What is the Math Object?</strong><br>
+        <code>Math</code> is a built-in JavaScript object that comes with useful math functions and constants. You don't need to create it - it's always available!<br>
+        Use it like: <code>Math.methodName(value)</code>
+    </div>
+
+    <h3>Rounding Methods</h3>
+    <table>
+        <tr>
+            <th>Method</th>
+            <th>What It Does</th>
+            <th>Example</th>
+            <th>Result</th>
+        </tr>
+        <tr>
+            <td><code>Math.round(x)</code></td>
+            <td>Round to nearest integer</td>
+            <td><code>Math.round(3.6)</code></td>
+            <td><code>4</code></td>
+        </tr>
+        <tr>
+            <td><code>Math.floor(x)</code></td>
+            <td>Always round DOWN</td>
+            <td><code>Math.floor(3.9)</code></td>
+            <td><code>3</code></td>
+        </tr>
+        <tr>
+            <td><code>Math.ceil(x)</code></td>
+            <td>Always round UP</td>
+            <td><code>Math.ceil(3.1)</code></td>
+            <td><code>4</code></td>
+        </tr>
+        <tr>
+            <td><code>Math.trunc(x)</code></td>
+            <td>Remove decimal (truncate)</td>
+            <td><code>Math.trunc(3.9)</code></td>
+            <td><code>3</code></td>
+        </tr>
+    </table>
+
+    <h3>Other Math Methods</h3>
+    <table>
+        <tr>
+            <th>Method</th>
+            <th>What It Does</th>
+            <th>Example</th>
+            <th>Result</th>
+        </tr>
+        <tr>
+            <td><code>Math.pow(x, y)</code></td>
+            <td>x to the power of y</td>
+            <td><code>Math.pow(2, 8)</code></td>
+            <td><code>256</code></td>
+        </tr>
+        <tr>
+            <td><code>Math.sqrt(x)</code></td>
+            <td>Square root</td>
+            <td><code>Math.sqrt(25)</code></td>
+            <td><code>5</code></td>
+        </tr>
+        <tr>
+            <td><code>Math.abs(x)</code></td>
+            <td>Absolute value (removes - sign)</td>
+            <td><code>Math.abs(-7)</code></td>
+            <td><code>7</code></td>
+        </tr>
+        <tr>
+            <td><code>Math.max(a, b, ...)</code></td>
+            <td>Returns the largest number</td>
+            <td><code>Math.max(3, 9, 1)</code></td>
+            <td><code>9</code></td>
+        </tr>
+        <tr>
+            <td><code>Math.min(a, b, ...)</code></td>
+            <td>Returns the smallest number</td>
+            <td><code>Math.min(3, 9, 1)</code></td>
+            <td><code>1</code></td>
+        </tr>
+        <tr>
+            <td><code>Math.random()</code></td>
+            <td>Random decimal from 0 to &lt;1</td>
+            <td><code>Math.random()</code></td>
+            <td><code>0.572...</code></td>
+        </tr>
+    </table>
+
+    <div class="critical-box">
+        <strong>Generating Random Integers (Very Common!):</strong>
+        <div class="syntax-box" style="margin-top: 10px;">
+            <pre>
+<span class="comment">// Random decimal from 0 to 0.999...</span>
+Math.random()
+
+<span class="comment">// Random integer from 0 to 5</span>
+Math.floor(Math.random() * <span class="number">6</span>)
+
+<span class="comment">// Random integer from 1 to 6 (dice roll)</span>
+Math.floor(Math.random() * <span class="number">6</span>) + <span class="number">1</span>
+
+<span class="comment">// Random integer between min and max (inclusive)</span>
+Math.floor(Math.random() * (max - min + <span class="number">1</span>)) + min
+</pre>
+        </div>
+    </div>
+
+    <div class="info-box">
+        <strong>Math Constants:</strong><br>
+        • <code>Math.PI</code> - <code>3.14159265358979...</code> (Pi)<br>
+        • <code>Math.E</code> - <code>2.71828182845904...</code> (Euler's Number)
+    </div>
+
+    <div class="example-box">
+        <h3>Examples in JS File:</h3>
+        <ul>
+            <li><strong>Example 1:</strong> All rounding methods - <code>round</code>, <code>floor</code>, <code>ceil</code>, <code>trunc</code></li>
+            <li><strong>Example 2:</strong> <code>pow</code>, <code>sqrt</code>, <code>abs</code>, <code>max</code>, <code>min</code></li>
+            <li><strong>Example 3:</strong> <code>Math.random()</code> - generating random decimals and integers</li>
+            <li><strong>Example 4:</strong> Building a dice roller using <code>Math.random()</code> and <code>Math.floor()</code></li>
+        </ul>
+    </div>
+</section>
+
+
+<!-- Navigation -->
+<section style="background-color: white; padding: 20px; margin: 20px 0; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+    <div style="display: flex; justify-content: center; align-items: center; gap: 20px;">
+        <a href="index.html" style="text-decoration: none;">
+            <button style="background-color: #64748b; color: white; padding: 12px 24px; border: none; border-radius: 4px; cursor: pointer; font-size: 16px;">←</button>
+        </a>
+        <a href="index.html" style="text-decoration: none;">
+            <button style="background-color: #22c55e; color: white; padding: 12px 24px; border: none; border-radius: 4px; cursor: pointer; font-size: 16px;">🏠 Home</button>
+        </a>
+        <a href="2.html" style="text-decoration: none;">
+            <button style="background-color: #3b82f6; color: white; padding: 12px 24px; border: none; border-radius: 4px; cursor: pointer; font-size: 16px;">→</button>
+        </a>
+    </div>
+</section>
+
+<script src="1.js"></script>
+
+<style>
+    @media (min-width: 769px) {
+        body.panel-open { margin-right: 40%; transition: margin-right 0.3s ease; }
+    }
+    body { transition: margin-right 0.3s ease; }
+
+    #jsToggleBtn {
+        position: fixed; bottom: 30px; right: 30px;
+        background-color: #22c55e; color: white; border: none;
+        padding: 14px 20px; border-radius: 50px; cursor: pointer;
+        font-size: 15px; font-weight: 700;
+        box-shadow: 0 4px 15px rgba(34,197,94,0.4);
+        z-index: 1000; transition: all 0.3s ease;
+        display: flex; align-items: center; gap: 8px;
+    }
+    #jsToggleBtn:hover { background-color: #16a34a; transform: translateY(-3px); box-shadow: 0 6px 20px rgba(34,197,94,0.5); }
+
+    @media (min-width: 769px) {
+        #jsPanel { position: fixed; top: 0; right: -40%; width: 40%; height: 100%; background-color: #1e293b; z-index: 999; transition: right 0.3s ease; display: flex; flex-direction: column; }
+        #jsPanel.open { right: 0; }
+    }
+    @media (max-width: 768px) {
+        #jsPanel { position: fixed; top: 0; left: 0; right: 0; bottom: 0; width: 100%; height: 100%; background-color: #1e293b; z-index: 999; display: none; flex-direction: column; }
+        #jsPanel.open { display: flex; }
+        #jsToggleBtn { bottom: 20px; right: 20px; padding: 12px 16px; font-size: 14px; }
+    }
+
+    #jsPanelHeader { display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; background-color: #0f172a; border-bottom: 2px solid #22c55e; flex-shrink: 0; }
+    #jsPanelTitle { color: #22c55e; font-size: 15px; font-weight: 700; font-family: monospace; }
+    #jsPanelClose { background: none; border: none; color: #94a3b8; font-size: 22px; cursor: pointer; padding: 0 5px; line-height: 1; transition: color 0.2s; }
+    #jsPanelClose:hover { color: white; }
+    #jsPanelCode { overflow-y: auto; flex: 1; padding: 20px; margin: 0; font-family: monospace; font-size: 13px; line-height: 1.7; color: #e2e8f0; white-space: pre; }
+    @media (max-width: 768px) { #jsPanelCode { font-size: 11px; padding: 15px; } }
+
+    .js-keyword  { color: #c084fc; }
+    .js-string   { color: #86efac; }
+    .js-comment  { color: #94a3b8; font-style: italic; }
+    .js-number   { color: #fb923c; }
+    .js-function { color: #60a5fa; }
+</style>
+
+<button id="jsToggleBtn">
+    <span>{ }</span>
+    <span id="jsToggleBtnText">View JS File</span>
+</button>
+
+<div id="jsPanel">
+    <div id="jsPanelHeader">
+        <span id="jsPanelTitle">📄 loading...</span>
+        <button id="jsPanelClose">✕</button>
+    </div>
+    <pre id="jsPanelCode">Loading...</pre>
+</div>
+
+<script>
+    const jsFileName = "1.js";
+
+    const panel     = document.getElementById("jsPanel");
+    const toggleBtn = document.getElementById("jsToggleBtn");
+    const btnText   = document.getElementById("jsToggleBtnText");
+    const closeBtn  = document.getElementById("jsPanelClose");
+    const codeEl    = document.getElementById("jsPanelCode");
+    const titleEl   = document.getElementById("jsPanelTitle");
+
+    let loaded = false;
+
+    function highlight(code) {
+        const tokens = [];
+        let i = 0;
+        let plain = "";
+
+        function flushPlain() {
+            if (!plain) return;
+            let s = plain.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+            s = s.replace(/\b(const|let|var|function|return|if|else|for|while|do|class|new|this|typeof|instanceof|import|export|default|async|await|try|catch|finally|throw|switch|case|break|continue|extends|super|static|of|in|true|false|null|undefined)\b/g,'<span class="js-keyword">$1</span>');
+            s = s.replace(/\b(\d+\.?\d*)\b/g,'<span class="js-number">$1</span>');
+            tokens.push(s);
+            plain = "";
         }
 
-        // Open/close panel
-        function togglePanel() {
-            const isOpen = panel.classList.contains("open");
+        while (i < code.length) {
+            if (code[i]==="/" && code[i+1]==="*") {
+                flushPlain();
+                let end = code.indexOf("*/", i+2);
+                if (end===-1) end = code.length-2;
+                const comment = code.slice(i,end+2).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+                tokens.push(`<span class="js-comment">${comment}</span>`);
+                i = end+2; continue;
+            }
+            if (code[i]==="/" && code[i+1]==="/") {
+                flushPlain();
+                let end = code.indexOf("\n", i);
+                if (end===-1) end = code.length;
+                const comment = code.slice(i,end).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+                tokens.push(`<span class="js-comment">${comment}</span>`);
+                i = end; continue;
+            }
+            if (code[i]==="`") {
+                flushPlain();
+                let j = i+1;
+                while (j < code.length && code[j]!=="`") { if(code[j]==="\\") j++; j++; }
+                const str = code.slice(i,j+1).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+                tokens.push(`<span class="js-string">${str}</span>`);
+                i = j+1; continue;
+            }
+            if (code[i]==='"') {
+                flushPlain();
+                let j = i+1;
+                while (j < code.length && code[j]!=='"') { if(code[j]==="\\") j++; j++; }
+                const str = code.slice(i,j+1).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+                tokens.push(`<span class="js-string">${str}</span>`);
+                i = j+1; continue;
+            }
+            if (code[i]==="'") {
+                flushPlain();
+                let j = i+1;
+                while (j < code.length && code[j]!=="'") { if(code[j]==="\\") j++; j++; }
+                const str = code.slice(i,j+1).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+                tokens.push(`<span class="js-string">${str}</span>`);
+                i = j+1; continue;
+            }
+            plain += code[i];
+            i++;
+        }
+        flushPlain();
+        return tokens.join("");
+    }
 
-            if (isOpen) {
-                panel.classList.remove("open");
-                document.body.classList.remove("panel-open");
-                btnText.textContent = "View JS File";
-            } else {
-                panel.classList.add("open");
-                document.body.classList.add("panel-open");
-                btnText.textContent = "Close JS File";
-
-                // Load file only once
-                if (!loaded) {
-                    titleEl.textContent = "📄 " + jsFileName;
-                    fetch(jsFileName)
-                        .then(res => {
-                            if (!res.ok) throw new Error("File not found");
-                            return res.text();
-                        })
-                        .then(code => {
-                            codeEl.innerHTML = highlight(code);
-                            loaded = true;
-                        })
-                        .catch(() => {
-                            codeEl.textContent = "❌ Could not load " + jsFileName + "\nMake sure the file is in the same folder as this HTML file.";
-                        });
-                }
+    function togglePanel() {
+        const isOpen = panel.classList.contains("open");
+        if (isOpen) {
+            panel.classList.remove("open");
+            document.body.classList.remove("panel-open");
+            btnText.textContent = "View JS File";
+        } else {
+            panel.classList.add("open");
+            document.body.classList.add("panel-open");
+            btnText.textContent = "Close JS File";
+            if (!loaded) {
+                titleEl.textContent = "📄 " + jsFileName;
+                fetch(jsFileName)
+                    .then(res => { if(!res.ok) throw new Error("File not found"); return res.text(); })
+                    .then(code => { codeEl.innerHTML = highlight(code); loaded = true; })
+                    .catch(() => { codeEl.textContent = "❌ Could not load " + jsFileName + "\nMake sure the file is in the same folder as this HTML file."; });
             }
         }
+    }
 
-        toggleBtn.addEventListener("click", togglePanel);
-        closeBtn.addEventListener("click", togglePanel);
+    toggleBtn.addEventListener("click", togglePanel);
+    closeBtn.addEventListener("click", togglePanel);
 
-        // Hide button near footer on mobile
-        if (window.innerWidth <= 768) {
-            window.addEventListener('scroll', () => {
-                const footer = document.querySelector('footer');
-                const btn = document.getElementById('jsToggleBtn');
-                
-                if (footer) {
-                    const footerTop = footer.getBoundingClientRect().top;
-                    const windowHeight = window.innerHeight;
-                    
-                    // Hide button when footer is visible
-                    if (footerTop < windowHeight) {
-                        btn.style.opacity = '0.3';
-                    } else {
-                        btn.style.opacity = '1';
-                    }
-                }
-            });
-        }
-    </script>
+    if (window.innerWidth <= 768) {
+        window.addEventListener('scroll', () => {
+            const footer = document.querySelector('footer');
+            const btn = document.getElementById('jsToggleBtn');
+            if (footer) {
+                const footerTop = footer.getBoundingClientRect().top;
+                if (footerTop < window.innerHeight) { btn.style.opacity = '0.3'; }
+                else { btn.style.opacity = '1'; }
+            }
+        });
+    }
+</script>
 
-    <footer style="text-align: center; padding: 0px; padding-top: 10px; color: #64748b; border-top: 1px solid #e5e7eb; margin-top: 35px;">
-        <p>© 2025 Umer Azmi | <a href="https://github.com/UmerAzmi/javascript-mastery/blob/main/LICENSE" target="_blank" style="color: #22c55e; text-decoration: none;">MIT License</a> </p>
-        <p style="font-size: 14px; margin: 5px 0 0;">JavaScript Mastery Guide - Open Source Learning Platform</p>
-        <p style="color: #64748b; font-size: 13px; margin-bottom: 0;">
-          <a href="https://github.com/UmerAzmi/javascript-mastery" target="_blank" style="color: #22c55e; text-decoration: none;">⭐ Star on GitHub</a>
-        </p>
-    </footer>
-  </body>
+<footer style="text-align: center; padding: 0px; padding-top: 10px; color: #64748b; border-top: 1px solid #e5e7eb; margin-top: 35px;">
+    <p>© 2025 Umer Azmi | <a href="https://github.com/UmerAzmi/javascript-mastery/blob/main/LICENSE" target="_blank" style="color: #22c55e; text-decoration: none;">MIT License</a></p>
+    <p style="font-size: 14px; margin: 5px 0 0;">JavaScript Mastery Guide - Open Source Learning Platform</p>
+    <p style="color: #64748b; font-size: 13px; margin-bottom: 0;">
+        <a href="https://github.com/UmerAzmi/javascript-mastery" target="_blank" style="color: #22c55e; text-decoration: none;">⭐ Star on GitHub</a>
+    </p>
+</footer>
+
+</body>
 </html>
